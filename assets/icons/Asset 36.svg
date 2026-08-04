@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 313.16 182.42">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+        fill-opacity: .3;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-5 {
+        fill: #9431ff;
+      }
+
+      .cls-4 {
+        fill: url(#radial-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="47.36" y1="2895.92" x2="229.38" y2="2721.28" gradientTransform="translate(0 2932.3483) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5a81ff" stop-opacity=".9"/>
+      <stop offset=".45" stop-color="#567dff" stop-opacity=".96"/>
+      <stop offset="1" stop-color="#4e78ff" stop-opacity=".9"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="48.99" y1="2903.99" x2="196.88" y2="2743.99" gradientTransform="translate(0 2932.3483) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset=".19" stop-color="#e7f0ff" stop-opacity=".52"/>
+      <stop offset=".53" stop-color="#9431ff"/>
+      <stop offset="1" stop-color="#9431ff"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient" cx="-1059.98" cy="2044.52" fx="-1059.98" fy="2044.52" r="1.22" gradientTransform="translate(372057.995 225013.4209) rotate(-33.6601) scale(124.7542 -192.3862) skewX(-11.6939)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-5" d="M313.16,69.93c0,38.63-31.3,69.93-69.93,69.93s-69.93-31.3-69.93-69.93S204.61,0,243.23,0s69.93,31.3,69.93,69.93Z"/>
+      <path class="cls-1" d="M0,113.5C0,75.45,30.86,44.6,68.92,44.6h117.55c38.07,0,68.92,30.85,68.92,68.91s-30.85,68.92-68.92,68.92h-117.55C30.86,182.42,0,151.57,0,113.5Z" data-figma-bg-blur-radius="30"/>
+      <g data-figma-bg-blur-radius="30">
+        <path class="cls-3" d="M186.47,45.81h-117.55C31.53,45.81,1.22,76.12,1.22,113.5s30.31,67.7,67.7,67.7h117.55c37.4,0,67.7-30.31,67.7-67.7s-30.31-67.69-67.7-67.69ZM68.92,44.6C30.86,44.6,0,75.45,0,113.5s30.86,68.92,68.92,68.92h117.55c38.07,0,68.92-30.85,68.92-68.92s-30.85-68.91-68.92-68.91h-117.55Z"/>
+        <path class="cls-4" d="M186.47,45.81h-117.55C31.53,45.81,1.22,76.12,1.22,113.5s30.31,67.7,67.7,67.7h117.55c37.4,0,67.7-30.31,67.7-67.7s-30.31-67.69-67.7-67.69ZM68.92,44.6C30.86,44.6,0,75.45,0,113.5s30.86,68.92,68.92,68.92h117.55c38.07,0,68.92-30.85,68.92-68.92s-30.85-68.91-68.92-68.91h-117.55Z"/>
+      </g>
+      <circle class="cls-2" cx="70.44" cy="114.01" r="57.26"/>
+    </g>
+  </g>
+</svg>

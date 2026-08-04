@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 247.4 252.45">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d1dbff;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: #9431fe;
+        mix-blend-mode: multiply;
+      }
+
+      .cls-3, .cls-4 {
+        opacity: .85;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 11.42px;
+      }
+    </style>
+  </defs>
+  <g class="cls-2">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layer_1-2" data-name="Layer 1">
+        <g>
+          <circle class="cls-1" cx="123.7" cy="128.67" r="123.7"/>
+          <path class="cls-4" d="M0,127.46h247.4M123.7,3.76v247.4M38.06,51.34c57.09,38.06,114.19,38.06,171.28,0M38.06,203.59c57.09-38.06,114.19-38.06,171.28,0M66.61,3.76c-19.03,82.47-19.03,164.93,0,247.4M180.79,3.76c19.03,82.47,19.03,164.93,0,247.4"/>
+          <circle class="cls-3" cx="202.54" cy="42.82" r="42.82"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

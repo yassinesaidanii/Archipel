@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مكتبة الفيديوهات – Archipel Mixed Learning</title>
+  <meta name="description" content="شهادات التلاميذ والأولياء، وبودكاستات Archipel Mixed Learning في مكان واحد."/>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --bg:           #EEE9F8;
+      --purple:       #3B1FA8;
+      --purple-mid:   #5A3DC8;
+      --purple-light: #EDE8FA;
+      --orange:       #F47820;
+      --orange-light: #FEF0E5;
+      --navy:         #1E1464;
+      --white:        #FFFFFF;
+      --text:         #2D1B69;
+      --muted:        #7B6DAA;
+      --border:       #DDD6F5;
+      --teal:         #0F766E;
+      --teal-light:   #E6F7F4;
+      --radius:       18px;
+      --shadow:       0 4px 28px rgba(59,31,168,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; direction: rtl; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 60px 5% 44px; position: relative; overflow: hidden; }
+    .dots-tl {
+      position: absolute; top: 20px; left: 5%;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; opacity: .2;
+    }
+    .dots-tl span { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); display: block; }
+    .dots-br {
+      position: absolute; bottom: 20px; right: 5%;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; opacity: .15;
+    }
+    .dots-br span { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: block; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: var(--orange); font-size: 13px; font-weight: 800;
+      letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .eyebrow::before, .eyebrow::after { content: '✦'; font-size: 9px; }
+    .hero h1 {
+      font-size: clamp(28px, 4.5vw, 52px); font-weight: 900; color: var(--navy);
+      line-height: 1.4; max-width: 680px; margin: 0 auto 14px;
+    }
+    .hero h1 em { color: var(--orange); font-style: normal; }
+    .hero p { color: var(--muted); font-size: 16px; max-width: 480px; margin: 0 auto 30px; line-height: 1.7; }
+    .search-wrap { max-width: 460px; margin: 0 auto; position: relative; }
+    .search-wrap input {
+      width: 100%; padding: 14px 20px 14px 56px;
+      border: 2px solid var(--border); border-radius: 50px;
+      font-family: 'Tajawal', sans-serif; font-size: 15px; color: var(--text);
+      background: var(--white); outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .search-wrap input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(59,31,168,.1); }
+    .search-wrap button {
+      position: absolute; left: 6px; right: auto; top: 50%; transform: translateY(-50%);
+      background: var(--purple); border: none; border-radius: 50px;
+      width: 40px; height: 40px; display: grid; place-items: center;
+      cursor: pointer; color: white; font-size: 16px;
+    }
+
+    /* STATS */
+    .stats-row {
+      max-width: 760px; margin: 34px auto 0; display: flex; background: var(--white);
+      border-radius: 50px; box-shadow: var(--shadow); overflow: hidden; position: relative; z-index: 1;
+    }
+    .stat { flex: 1; text-align: center; padding: 16px 10px; position: relative; }
+    .stat:not(:last-child)::after { content: ''; position: absolute; left: 0; top: 22%; bottom: 22%; width: 1px; background: var(--border); }
+    .stat b { display: block; font-size: 20px; font-weight: 900; color: var(--purple); }
+    .stat span { font-size: 11.5px; color: var(--muted); font-weight: 700; }
+
+    /* FILTERS */
+    .filters-section { padding: 28px 5% 0; display: flex; justify-content: center; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .filter-btn {
+      background: var(--white); border: 2px solid var(--border); color: var(--muted);
+      border-radius: 50px; padding: 8px 20px; display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'Tajawal', sans-serif; font-size: 14px; font-weight: 700;
+      cursor: pointer; transition: all .2s;
+    }
+    .filter-btn:hover { border-color: var(--purple); color: var(--purple); }
+    .filter-btn.active { background: var(--purple); border-color: var(--purple); color: white; }
+    .filter-btn .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* CONTAINER */
+    .container { max-width: 1180px; margin: 0 auto; padding: 40px 5% 80px; }
+
+    /* ── vignette vidéo commune (utilisée dans "à la une" + grille) ── */
+    .thumb {
+      position: relative; cursor: pointer; overflow: hidden;
+      background: linear-gradient(135deg, var(--navy), var(--purple));
+    }
+    .thumb img.cover-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: transform .35s;
+    }
+    .thumb:hover img.cover-img { transform: scale(1.05); }
+    .thumb .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,4,40,0) 40%, rgba(10,4,40,.72) 100%);
+    }
+    .thumb .placeholder {
+      position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; color: rgba(255,255,255,.85);
+    }
+    .thumb .placeholder .p-emoji { font-size: 34px; }
+    .thumb .placeholder .p-name { font-size: 12.5px; font-weight: 700; text-align: center; padding: 0 14px; }
+    .thumb .play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 54px; height: 54px; border-radius: 50%;
+      background: rgba(255,255,255,.16); border: 1.5px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(3px);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 17px; padding-right: 3px;
+      transition: transform .2s, background .2s;
+    }
+    .thumb:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: var(--orange); border-color: var(--orange); }
+    .thumb .cat-pill {
+      position: absolute; top: 10px; right: 10px; z-index: 2;
+      font-size: 10.5px; font-weight: 800; letter-spacing: .04em;
+      padding: 4px 12px; border-radius: 50px; color: #fff;
+    }
+    .thumb .no-link-pill {
+      position: absolute; bottom: 10px; right: 10px; left: 10px; z-index: 2;
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,.8);
+      text-align: center; background: rgba(0,0,0,.35); border-radius: 8px; padding: 5px 6px;
+    }
+
+    /* FEATURED */
+    .featured {
+      background: var(--white); border-radius: var(--radius);
+      overflow: hidden; display: grid; grid-template-columns: 1.05fr 1fr;
+      box-shadow: var(--shadow); margin-bottom: 48px;
+    }
+    .featured .thumb { min-height: 300px; }
+    .featured .feat-badge {
+      position: absolute; top: 16px; left: 16px; z-index: 2;
+      background: rgba(255,255,255,.16); backdrop-filter: blur(4px); color: white;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: 5px 15px; border-radius: 50px;
+    }
+    .featured .thumb .play-btn { width: 66px; height: 66px; font-size: 21px; }
+    .feat-body {
+      padding: 38px 34px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 4px 13px; border-radius: 50px; margin-bottom: 14px; align-self: flex-start;
+    }
+    .t-eleves { background: var(--orange-light); color: var(--orange); }
+    .t-parents { background: var(--purple-light); color: var(--purple); }
+    .t-podcast { background: var(--teal-light); color: var(--teal); }
+    .feat-body h2 {
+      font-size: clamp(20px, 2.4vw, 27px); font-weight: 900; color: var(--navy);
+      line-height: 1.45; margin-bottom: 12px;
+    }
+    .feat-body p { color: var(--muted); font-size: 14.5px; line-height: 1.8; margin-bottom: 20px; }
+    .author-row { display: flex; align-items: center; gap: 10px; }
+    .avatar {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+      display: grid; place-items: center;
+      font-size: 12px; color: white; font-weight: 800; overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .author-info strong { display: block; font-size: 13px; font-weight: 700; color: var(--navy); }
+    .author-info span { font-size: 12px; color: var(--muted); }
+    .watch-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--orange); color: white; border: none; border-radius: 50px;
+      padding: 10px 22px; font-family: 'Tajawal', sans-serif; font-size: 14px; font-weight: 700;
+      cursor: pointer; margin-top: 20px; align-self: flex-start;
+      transition: background .2s;
+    }
+    .watch-btn:hover { background: #d66410; }
+
+    /* SECTION HEADER */
+    .sec-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 10px; }
+    .sec-title { font-size: 18px; font-weight: 900; color: var(--navy); }
+    .count-pill {
+      background: var(--purple-light); color: var(--purple);
+      font-size: 12px; font-weight: 800; padding: 4px 14px; border-radius: 50px;
+    }
+
+    /* GRID - Cards portrait compactes */ .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+     /* CARD */ 
+     .card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; border: 2px solid transparent; } 
+     .card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(59,31,158,.15); border-color: var(--border); } 
+     /* THUMBNAIL PORTRAIT */ 
+     .card .thumb { aspect-ratio: 9 / 14; padding-top: 0; position: relative; overflow: hidden; } 
+     /* IMAGE */ 
+     .card .thumb img.cover-img { width: 100%; height: 100%; object-fit: cover; } 
+     /* CARD BODY */ 
+     .card-body { padding: 12px 14px 14px; } 
+     .card h3 { font-size: 14px; font-weight: 800; color: var(--navy); line-height: 1.5; margin: 7px 0; } 
+     .card p { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; } 
+     .card-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1.5px solid var(--border); padding-top: 10px; } 
+     .card-auth { display: flex; align-items: center; gap: 7px; } 
+     .card-auth .avatar { width: 26px; height: 26px; font-size: 10px; } 
+     .card-auth-name { font-size: 11px; font-weight: 700; color: var(--navy); } 
+     .card-date { font-size: 10px; color: var(--muted); }
+
+
+
+     /* MOBILE */ @media (max-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .card .thumb { aspect-ratio: 9 / 13; } .card-body { padding: 10px; } }
+    /* EMPTY */
+    .empty { grid-column: 1/-1; text-align: center; padding: 72px 24px; color: var(--muted); }
+    .empty div.ico { font-size: 48px; margin-bottom: 16px; opacity: .5; }
+    .empty h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+
+    /* CTA STRIP */
+    .cta-strip {
+      background: linear-gradient(120deg, var(--navy), var(--purple)); border-radius: var(--radius);
+      padding: 34px 36px; display: flex; align-items: center; justify-content: space-between;
+      gap: 18px; flex-wrap: wrap; color: white; margin-top: 12px; position: relative; overflow: hidden;
+    }
+    .cta-strip::after { content: ''; position: absolute; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%); top: -80px; left: -60px; }
+    .cta-strip h3 { font-size: 20px; font-weight: 900; margin-bottom: 5px; position: relative; z-index: 1; }
+    .cta-strip p { color: rgba(255,255,255,.75); font-size: 14px; position: relative; z-index: 1; }
+    .cta-btn {
+      background: white; color: var(--purple); font-weight: 800; font-size: 14px;
+      padding: 12px 24px; border-radius: 50px; text-decoration: none; white-space: nowrap;
+      transition: transform .2s; position: relative; z-index: 1;
+    }
+    .cta-btn:hover { transform: translateY(-2px); }
+
+    /* ── VIDEO MODAL (identique au reste du site — piloté par openVideo() dans main.js) ── */
+    .modal-bg{
+      display:none; position:fixed; inset:0; background:rgba(6,2,18,.92); z-index:9999;
+      align-items:center; justify-content:center; padding:16px;
+      backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    }
+    .modal-bg.open{ display:flex; }
+    .modal-box{
+      position:relative; width:100%; max-width:900px; aspect-ratio:16/9;
+      background:#000; border-radius:20px; overflow:hidden; box-shadow:0 32px 100px rgba(0,0,0,.75);
+    }
+    .modal-box.portrait{ max-width:400px; aspect-ratio:9/16; }
+    .modal-iframe{ width:100%; height:100%; border:none; display:block; }
+    .modal-close{
+      position:absolute; top:12px; left:12px; z-index:10;
+      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); color:#fff;
+      width:38px; height:38px; border-radius:50%; cursor:pointer; font-size:1rem;
+      display:flex; align-items:center; justify-content:center; transition:background .2s;
+    }
+    .modal-close:hover{ background:rgba(255,255,255,.25); }
+    @media(max-width:480px){
+      .modal-box{ max-width:94vw; }
+      .modal-box.portrait{ max-width:80vw; }
+    }
+
+    @media (max-width: 700px) {
+      .featured { grid-template-columns: 1fr; }
+      .featured .thumb { min-height: 200px; }
+      .nav-links { display: none; }
+      .stats-row { flex-wrap: wrap; border-radius: 20px; }
+      .stat { flex: 1 1 50%; }
+      .stat:nth-child(2)::after { display: none; }
+    }
+    
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════ -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" target="_blank">
+    <!-- Logo sans fond avec texte mauve pour fond blanc -->
+    <img fetchpriority="high" decoding="async" src="assets/svg/archipel black.svg" class="logo-img-nav" alt="Archipel"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <span class="logo-fallback" style="display:none">
+      <span class="l-arc">ARCHIPEL</span>
+      <span class="l-ml">ML</span>
+    </span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="about.html">من نحن</a></li>
+    <li><a href="centres.html">مراكزنا</a></li>
+    <li><a href="ressources.html">مكتبتنا</a></li>
+    <li><a href="blog.html">فيديوهاتنا</a></li>
+    <li class="nav-dropdown" id="nav-offres-list">
+      <a href="javascript:void(0)" onclick="toggleOffresDropdown(event)">عروضنا <span class="nav-arrow">▾</span></a>
+      <ul class="nav-drop-menu">
+        <li><a href="offre-primaire.html">ابتدائي</a></li>
+        <li><a href="offre-college.html">إعدادي</a></li>
+        <li><a href="offre-lycee.html">ثانوي</a></li>
+        <li><a href="offre-bac.html">بكالوريا</a></li>
+      </ul>
+    </li>
+    <li><a href="workshops.html">ورشات العمل </a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <a class="btn-outline" href="connexion.html">تسجيل الدخول</a>
+    <a class="btn-purple" href="inscription.html">سجل مجاناً ←</a>
+  </div>
+
+  <button class="nav-burger" id="navBurger" aria-label="القائمة">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="index.html" onclick="closeDrawer()">الرئيسية</a></li>
+    <li><a href="about.html" onclick="closeDrawer()">من نحن</a></li>
+    <li><a href="centres.html" onclick="closeDrawer()">مراكزنا</a></li>
+    <li><a href="ressources.html" onclick="closeDrawer()">مكتبتنا</a></li>
+    <li><a href="blog.html" onclick="closeDrawer()">فيديوهاتنا</a></li>
+    <li class="drawer-has-sub">
+      <button type="button" class="drawer-sub-toggle" onclick="toggleDrawerSub(event)">عروضنا <span class="nav-arrow">▾</span></button>
+      <ul class="drawer-sub-menu">
+        <li><a href="offre-primaire.html" onclick="closeDrawer()">ابتدائي</a></li>
+        <li><a href="offre-college.html" onclick="closeDrawer()">إعدادي</a></li>
+        <li><a href="offre-lycee.html" onclick="closeDrawer()">ثانوي</a></li>
+        <li><a href="offre-bac.html" onclick="closeDrawer()">بكالوريا</a></li>
+      </ul>
+    </li>
+    <li><a href="workshops.html" onclick="closeDrawer()">ورشات العمل</a></li>
+  </ul>
+  <div class="nav-drawer-btns">
+    <a class="btn-outline" href="connexion.html">تسجيل الدخول</a>
+    <a class="btn-purple" href="inscription.html" onclick="closeDrawer()">سجل مجاناً ←</a>
+  </div>
+</div>
+</div>
+
+<header class="hero">
+  <div class="dots-tl">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="dots-br">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <p class="eyebrow">مكتبتنا المرئية</p>
+  <h1>شهاداتهم <em>الحقيقية</em><br/>وقصصنا في فيديوهات</h1>
+  <p>تلاميذنا وأولياؤهم يتحدثون بصوتهم، وبودكاستات Archipel لمرافقتك في رحلتك التعليمية</p>
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="ابحث عن فيديو…" oninput="doSearch()"/>
+    <button>🔍</button>
+  </div>
+<!--
+  <div class="stats-row" id="statsRow">
+    <div class="stat"><b id="statTotal">0</b><span>فيديو متاح</span></div>
+    <div class="stat"><b id="statEleves">0</b><span>شهادة تلميذ</span></div>
+    <div class="stat"><b id="statParents">0</b><span>شهادة ولي</span></div>
+    <div class="stat"><b id="statPodcast">0</b><span>حلقة بودكاست</span></div>
+  </div>
+  -->
+  <div class="filters-section">
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-cat="الكل">الكل</button>
+    <button class="filter-btn" data-cat="تلاميذ"><span class="dot" style="background:var(--orange)"></span>شهادات التلاميذ</button>
+    <button class="filter-btn" data-cat="أولياء"><span class="dot" style="background:var(--purple)"></span>شهادات الأولياء</button>
+    <button class="filter-btn" data-cat="بودكاست"><span class="dot" style="background:var(--teal)"></span>بودكاست</button>
+  </div>
+</div>
+</header>
+<!--
+<div class="filters-section">
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-cat="الكل">الكل</button>
+    <button class="filter-btn" data-cat="تلاميذ"><span class="dot" style="background:var(--orange)"></span>شهادات التلاميذ</button>
+    <button class="filter-btn" data-cat="أولياء"><span class="dot" style="background:var(--purple)"></span>شهادات الأولياء</button>
+    <button class="filter-btn" data-cat="بودكاست"><span class="dot" style="background:var(--teal)"></span>بودكاست</button>
+  </div>
+</div>
+-->
+<main class="container">
+  <div class="featured" id="featured"></div>
+  <div class="sec-header">
+    <span class="sec-title">جميع الفيديوهات</span>
+    <span class="count-pill" id="badge">0 فيديو</span>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <div class="cta-strip" style="margin-top:48px">
+    <div>
+      <h3>عندك قصة تحب تشاركها؟</h3>
+      <p>تواصل معنا وسجّل شهادتك، تلميذ كنت أو ولي أمر.</p>
+    </div>
+    <a class="cta-btn" href="inscription.html">تواصل معنا ←</a>
+  </div>
+</main>
+
+<!-- VIDEO MODAL (openVideo / closeVideo / closeVideoBtn viennent de js/main.js) -->
+<div class="modal-bg" id="videoModal" onclick="closeVideo(event)">
+  <div class="modal-box" id="videoModalBox">
+    <button class="modal-close" onclick="closeVideoBtn()">✕</button>
+    <iframe class="modal-iframe" id="videoIframe" src="" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+
+    <!-- Branding -->
+    <div class="footer-brand">
+      <img src="assets/logos/logoarchipel.png" class="footer-logo-img" alt="Archipel Mixed Learning"
+        onerror="this.style.display='none'">
+      <p class="footer-tagline">
+        أول مؤسسة تعليمية في تونس<br>
+        نُرافق كل مراهق في رحلة اكتشاف ذاته وبناء مساره.
+      </p>
+      <div class="footer-socials">
+        <a class="footer-social-btn" href="https://www.facebook.com/archipelmixedlearning" target="_blank" title="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a class="footer-social-btn" href="https://www.instagram.com/archipel_mixed_learning" target="_blank" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a class="footer-social-btn" href="https://www.tiktok.com/@archipelmixedlearning" target="_blank" title="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.16 8.16 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- الصفحات -->
+    <div class="footer-col">
+      <h4>الصفحات</h4>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="about.html">من نحن</a></li>
+        <li><a href="centres.html">مراكزنا</a></li>
+      </ul>
+    </div>
+
+    <!-- عروضنا -->
+    <div class="footer-col">
+      <h4>عروضنا</h4>
+      <ul>
+        <li><a href="offre-primaire.html">ابتدائي</a></li>
+        <li><a href="offre-college.html">إعدادي</a></li>
+        <li><a href="offre-lycee.html">ثانوي</a></li>
+        <li><a href="offre-bac.html">بكالوريا</a></li>
+      </ul>
+    </div>
+
+    <!-- تواصل معنا -->
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li><a href="https://www.facebook.com/archipelmixedlearning" target="_blank">صفحتنا على Facebook</a></li>
+        <li><a href="tel:+21622073119"><span dir="ltr">22 07 31 19</span></a></li>
+        <li><a href="tel:+21623072601"><span dir="ltr">23 07 26 01</span></a></li>
+        <li><a href="mailto:direction@archipelmix.com">direction@archipelmix.com</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Archipel Mixed Learning جميع الحقوق محفوظة</span>
+    <span>صُنع بـ ❤️ في تونس</span>
+  </div>
+
+  <style>
+    /* ── FOOTER ── */
+.footer{background:var(--p);color:rgba(255,255,255,.75);font-size:1rem}
+.footer-top{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding:52px 24px 40px;align-items:start}
+.footer-brand{}
+.footer-logo-img{height:44px;width:auto;max-width:180px;display:block;margin-bottom:14px}
+.footer-tagline{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:20px}
+.footer-socials{display:flex;gap:10px}
+.footer-social-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:.95rem;transition:background .2s,transform .2s}
+.footer-social-btn:hover{background:var(--o);transform:translateY(-2px)}
+.footer-col h4{font-size:1.15rem;font-weight:900;color:#fff;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px;opacity:1}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-col ul li a{color:rgba(255,255,255,.72);text-decoration:none;font-size:1rem;transition:color .2s;display:flex;align-items:center;gap:6px}
+.footer-col ul li a:hover{color:#fff}
+.footer-col ul li a::before{content:'›';opacity:.4;font-size:1rem}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:16px 24px;max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:rgba(255,255,255,.4)}
+.footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none}
+@media(max-width:820px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}.footer-brand{grid-column:span 2}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}.footer-brand{grid-column:span 1}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
+
+@media(max-width:480px){
+  .estats-grid{grid-template-columns:1fr 1fr}
+  .estat-num{font-size:1.9rem}
+  .hero-about h1{font-size:1.9rem}
+  .hero-about .lead{font-size:1.05rem}
+  .values-grid{grid-template-columns:1fr}
+}
+  </style>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════
+   كيفية إضافة فيديو جديد:
+   1) انسخ رابط الفيديو العادي من يوتيوب أو فيسبوك (رابط المشاهدة
+      العادي، وليس بالضرورة رابط embed) — مثال:
+      https://www.youtube.com/watch?v=VIDEO_ID
+      https://www.facebook.com/reel/XXXXXXXXXX
+      https://youtube.com/shorts/VIDEO_ID  (يُعرض عمودياً تلقائياً)
+   2) أضف عنصرًا جديدًا في مصفوفة VIDEOS أسفله وضع الرابط في url
+   3) أضف صورة غلاف في cover (اختياري) — إن لم تتوفر ستظهر بطاقة
+      بلون متدرّج مع أول حرف/إيموجي بدلاً منها
+   دالة openVideo() الموجودة في js/main.js تتكفّل بالباقي: تكتشف
+   نوع الرابط (يوتيوب/فيسبوك/شورتس/ريلز) وتفتحه في نافذة مشغّل أنيقة.
+   ═══════════════════════════════════════════════════════════ */
+
+const CAT_LABEL = { 'تلاميذ':'شهادة تلميذ', 'أولياء':'شهادة ولي', 'بودكاست':'حلقة بودكاست' };
+const CAT_CLASS = { 'تلاميذ':'t-eleves', 'أولياء':'t-parents', 'بودكاست':'t-podcast' };
+const CAT_BG    = { 'تلاميذ':'var(--orange)', 'أولياء':'var(--purple)', 'بودكاست':'var(--teal)' };
+
+let filter = 'الكل', q = '';
+
+// ── أضف فيديوهاتك هنا ──
+let VIDEOS = [
+  {
+    id: 1,
+    title: 'رحلتي مع Archipel من الابتدائي إلى البكالوريا',
+    excerpt: 'مريم تحكي كيف ساعدها التعلم المختلط على تجاوز صعوباتها في الرياضيات وبناء الثقة بالنفس.',
+    cat: 'تلاميذ',
+    author: 'مريم بن علي',
+    date: '20 جوان 2026',
+    cover: 'assets/images/taha.png',
+    emoji: '🎓',
+    url: 'https://youtube.com/shorts/g8BnYzrY_lM',
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'كولي، شفت الفرق في شهرين',
+    excerpt: 'هذا اللّي خلّاني نجيب 17 في الباك" 🎯📚أهمّ النصائح للمراجعة في الباك مع عزّة وغفران،اللّي تميّزوا في بكالوريا 2025 ✨',
+    cat: 'أولياء',
+    author: 'سنية المجري',
+    date: '14 جوان 2026',
+    cover: 'assets/images/azza-bac.jpg',
+    emoji: '👩',
+    url: 'https://www.facebook.com/reel/1530195385466704'
+  },
+  {
+    id: 3,
+    title: 'بودكاست: كيف نبني عادات مذاكرة ناجحة؟',
+    excerpt: 'الحلقة الأولى من بودكاست Archipel مع فريق البيداغوجيا حول أسرار التنظيم الدراسي.',
+    cat: 'بودكاست',
+    author: 'فريق أرخبيل',
+    date: '2 جوان 2026',
+    cover: 'assets/images/ghofrane-kitab.jpg',
+    emoji: '🎓',
+    url: 'https://www.facebook.com/reel/4560326230920953',
+  },
+  {
+    id: 4,
+    title: 'بودكاست: كيف نبني عادات مذاكرة ناجحة؟',
+    excerpt: 'يفاه نعاون صغيري باش يحضّر لمناظرة النموذجي؟ 📚✨التحضير للنوفيام موش كان قراية و تمارين…',
+    cat: 'بودكاست',
+    author: 'فريق أرخبيل',
+    date: '2 جوان 2026',
+    cover: 'assets/images/nafseya1.jpg',
+    emoji: '🎙️',
+    url: 'https://www.facebook.com/reel/1995546827718494'
+  },
+  {
+    id: 5,
+    title: 'بودكاست: كيف نبني عادات مذاكرة ناجحة؟',
+    excerpt: 'الحلقة الأولى من بودكاست Archipel مع فريق البيداغوجيا حول أسرار التنظيم الدراسي.',
+    cat: 'بودكاست',
+    author: 'فريق أرخبيل',
+    date: '2 جوان 2026',
+    cover: 'assets/images/nafseya2.jpg',
+    emoji: '🎙️',
+    url: 'https://www.facebook.com/reel/993731430133153'
+  },
+  {
+    id: 6,
+    title: 'ابني أصبح يحب القراءة',
+    excerpt: 'أب يشارك تجربته مع ورشات القراءة الموجهة وأثرها على مستوى ابنه في اللغة العربية.',
+    cat: 'أولياء',
+    author: 'كريم الشابي',
+    date: '28 ماي 2026',
+    cover: 'assets/images/yassmine.png',
+    emoji: '👨',
+    url: 'https://youtube.com/shorts/vyVWWzbUnlE'
+  },
+  {
+    id: 7,
+    title: 'كيف حضّرت لامتحان البكالوريا معهم',
+    excerpt: 'تلميذة في شعبة الرياضيات تروي كيف نظّمت مسارها الدراسي بمرافقة مدرّسيها في أرخبيل.',
+    cat: 'تلاميذ',
+    author: 'أميرة الوسلاتي',
+    date: '18 ماي 2026',
+    cover: 'assets/images/azza.png',
+    emoji: '🏆',
+    url: 'https://youtube.com/shorts/o0qnIp86i_M'
+  },
+  {
+    id: 8,
+    title: 'بودكاست: التعلم المختلط بلغة بسيطة',
+    excerpt: 'كيفاش تضمن عدد باهي في الباك التطبيقي؟ 🎯📐النجاح موش صدفة…هو طريقة خدمة، تركيز، وتفاصيل صغيرة تنجم تعمل الفرق الكبير ✨',
+    cat: 'بودكاست',
+    author: 'فريق أرخبيل',
+    date: '5 ماي 2026',
+    cover: 'assets/images/advice-bac.jpg',
+    emoji: '🎙️',
+    url: 'https://www.facebook.com/reel/1289538012754637'
+  },
+  {
+    id: 9,
+    title: 'رحلتي مع Archipel من الابتدائي إلى البكالوريا',
+    excerpt: 'مريم تحكي كيف ساعدها التعلم المختلط على تجاوز صعوباتها في الرياضيات وبناء الثقة بالنفس.',
+    cat: 'بودكاست',
+    author: 'مريم بن علي',
+    date: '04 جوان 2026',
+    cover: 'assets/images/ghofrane-kitab.jpg',
+    emoji: '🎓',
+    url: 'https://www.facebook.com/reel/4560326230920953',
+  },
+];
+
+const ini = n => n.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+const catCls = c => CAT_CLASS[c] || 't-eleves';
+const catLbl = c => CAT_LABEL[c] || c;
+const catBg  = c => CAT_BG[c] || 'var(--purple)';
+
+/* Vignette cliquable : image de couverture (ou dégradé + emoji si absente),
+   bouton lecture, badge catégorie. Le clic ouvre openVideo() de main.js. */
+function thumbHtml(v, big){
+  const safeUrl = (v.url || '').replace(/'/g, "\\'");
+  const cover = v.cover
+    ? `<img class="cover-img" src="${v.cover}" alt="${v.title}"
+         onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex'">`
+    : '';
+  const noLink = "";
+  return `
+    <div class="thumb" style="${!v.cover ? `background:linear-gradient(135deg, var(--navy), ${catBg(v.cat)})` : ''}" onclick="openVideo('${safeUrl}')">
+      ${cover}
+      <div class="overlay"></div>
+      <div class="placeholder" style="display:${v.cover ? 'none' : 'flex'}">
+        <span class="p-emoji">${v.emoji || '🎬'}</span>
+        <span class="p-name">${v.author}</span>
+      </div>
+      <span class="cat-pill" style="background:${catBg(v.cat)}">${catLbl(v.cat)}</span>
+      <div class="play-btn">&#9654;</div>
+      ${noLink}
+    </div>`;
+}
+
+function getFiltered(){
+  return VIDEOS.filter(v=>{
+    const mc = filter==='الكل' || v.cat===filter;
+    const mq = !q || v.title.includes(q) || v.excerpt.includes(q);
+    return mc && mq;
+  });
+}
+ /*
+function updateStats(){
+  document.getElementById('statTotal').textContent = VIDEOS.length;
+  document.getElementById('statEleves').textContent = VIDEOS.filter(v=>v.cat==='تلاميذ').length;
+  document.getElementById('statParents').textContent = VIDEOS.filter(v=>v.cat==='أولياء').length;
+  document.getElementById('statPodcast').textContent = VIDEOS.filter(v=>v.cat==='بودكاست').length;
+}
+*/
+function renderFeatured(){
+  const el = document.getElementById('featured');
+  const list = getFiltered();
+  const v = list.find(x=>x.featured) || list[0];
+  if(!v){ el.style.display='none'; return; }
+  el.style.display='';
+  el.innerHTML = `
+    <div class="thumb" onclick="openVideo('${(v.url||'').replace(/'/g,"\\'")}')" style="${!v.cover ? `background:linear-gradient(135deg, var(--navy), ${catBg(v.cat)})` : ''}">
+      <span class="feat-badge">✦ فيديو مميّز</span>
+      ${v.cover ? `<img class="cover-img" src="${v.cover}" alt="${v.title}" onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex'">` : ''}
+      <div class="overlay"></div>
+      <div class="placeholder" style="display:${v.cover ? 'none' : 'flex'}">
+        <span class="p-emoji" style="font-size:44px">${v.emoji || '🎬'}</span>
+        <span class="p-name">${v.author}</span>
+      </div>
+      <div class="play-btn">&#9654;</div>
+    </div>
+    <div class="feat-body">
+      <span class="tag ${catCls(v.cat)}">${catLbl(v.cat)}</span>
+      <h2>${v.title}</h2>
+      <p>${v.excerpt}</p>
+      <div class="author-row">
+        <div class="avatar">${v.cover ? `<img src="${v.cover}" alt="${v.author}" onerror="this.remove()">` : ini(v.author)}</div>
+        <div class="author-info"><strong>${v.author}</strong><span>${v.date}</span></div>
+      </div>
+      <button class="watch-btn" onclick="openVideo('${(v.url||'').replace(/'/g,"\\'")}')">&#9654; شاهد الفيديو</button>
+    </div>`;
+}
+
+function renderGrid(){
+  const all = getFiltered();
+  const featuredId = (all.find(x=>x.featured) || all[0] || {}).id;
+  const list = all.filter(v=>v.id !== featuredId);
+  document.getElementById('badge').textContent = all.length + ' فيديو';
+  if(!all.length){
+    document.getElementById('grid').innerHTML = `<div class="empty"><div class="ico">🎬</div><h3>لا توجد فيديوهات</h3><p>جرّب تعديل البحث أو اختر فئة أخرى</p></div>`;
+    return;
+  }
+  document.getElementById('grid').innerHTML = list.map(v => `
+    <article class="card">
+      ${thumbHtml(v, false)}
+      <div class="card-body">
+        <span class="tag ${catCls(v.cat)}">${catLbl(v.cat)}</span>
+        <h3>${v.title}</h3>
+        <p>${v.excerpt}</p>
+        <div class="card-foot">
+          <div class="card-auth">
+            <div class="avatar">${v.cover ? `<img src="${v.cover}" alt="${v.author}" onerror="this.remove()">` : ini(v.author)}</div>
+            <div><div class="card-auth-name">${v.author}</div><div class="card-date">${v.date}</div></div>
+          </div>
+        </div>
+      </div>
+    </article>`).join('');
+}
+
+//function render(){ updateStats(); renderFeatured(); renderGrid(); }
+function render(){ ; renderFeatured(); renderGrid(); }
+
+document.getElementById('filters').addEventListener('click', e=>{
+  const b = e.target.closest('.filter-btn');
+  if(!b) return;
+  document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  filter = b.dataset.cat;
+  render();
+});
+
+function doSearch(){ q = document.getElementById('searchInput').value.trim(); render(); }
+
+render();
+</script>
+</body>
+</html>

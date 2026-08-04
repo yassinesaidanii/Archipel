@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إنشاء حساب  أرخبيل Mixed Learning</title>
+<link rel="icon" href="assets/svg/images.jpg">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --p:    #3D1A6E;
+  --pm:   #5B2D9E;
+  --pl:   #F0EBF8;
+  --o:    #E8520A;
+  --ol:   #FFF0E8;
+  --c:    #00AECC;
+  --tx:   #1a1a1a;
+  --txm:  #5a5856;
+  --cream:#FAF6EF;
+  --w:    #ffffff;
+  --bd:   #E2E0D8;
+  --err:  #D8342A;
+  --errl: #FDECEB;
+  --ok:   #16A34A;
+}
+
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:"Cairo",sans-serif;color:var(--tx);min-height:100vh;background:var(--p)}
+
+/* ══════════ NAV ══════════ */
+.nav{
+  position:relative;z-index:10;
+  padding:20px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo-fallback{font-family:"Cairo",sans-serif;font-weight:900;letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.logo-fallback .l-arc{color:#fff}
+.logo-fallback .l-ml{color:#ffb28a;font-size:.75em}
+.logo-img-nav{height:36px;display:block;}
+.nav-back{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.88rem;font-weight:600;transition:color .2s}
+.nav-back:hover{color:#fff}
+.nav-back svg{width:17px;height:17px}
+
+.nav-slogan{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  display:flex;align-items:center;gap:9px;
+  padding:9px 22px 9px 18px;border-radius:40px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,178,138,.32);
+  backdrop-filter:blur(6px);
+  animation:sloganGlow 3.2s ease-in-out infinite;
+  white-space:nowrap;pointer-events:none;
+}
+.nav-slogan svg{width:17px;height:17px;flex-shrink:0;color:#ffb28a;filter:drop-shadow(0 0 4px rgba(232,82,10,.5))}
+.nav-slogan span{
+  font-size:1.08rem;font-weight:900;letter-spacing:.01em;
+  background:linear-gradient(90deg, #ffb28a 0%, #fff 45%, #ffb28a 90%);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:sloganShine 5s linear infinite;
+}
+@keyframes sloganShine{to{background-position:-200% center}}
+@keyframes sloganGlow{
+  0%,100%{box-shadow:0 0 0 0 rgba(232,82,10,.18)}
+  50%{box-shadow:0 0 18px 3px rgba(232,82,10,.22)}
+}
+@media(prefers-reduced-motion:reduce){.nav-slogan span,.nav-slogan{animation:none}}
+@media(max-width:760px){.nav-slogan{display:none}}
+
+/* ══════════ LAYOUT ══════════ */
+.auth-wrap{
+  position:relative;z-index:1;
+  min-height:calc(100vh - 78px);
+  display:grid;grid-template-columns:.85fr 1.15fr;
+  gap:24px;max-width:1180px;margin:0 auto;padding:20px 24px 56px;
+  align-items:stretch;
+}
+
+/* ── PANNEAU GAUCHE  sur fond violet ── */
+.auth-visual{
+  border-radius:24px;
+  background:linear-gradient(150deg, var(--pm) 0%, var(--p) 100%);
+  padding:52px 40px;display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+}
+.auth-visual::before{
+  content:'';position:absolute;inset:0;opacity:.5;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.035'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.av-deco{position:absolute;pointer-events:none;opacity:.35}
+.av-deco svg{display:block}
+.av-deco-1{top:6%;left:8%;animation:decoFloat 6s ease-in-out infinite}
+.av-deco-2{bottom:8%;right:8%;animation:decoFloatRev 7s ease-in-out infinite -2s}
+@keyframes decoFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+@keyframes decoFloatRev{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(10px) rotate(-5deg)}}
+@media(prefers-reduced-motion:reduce){.av-deco{animation:none}}
+
+.av-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;position:relative;
+  font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:#ffb28a;margin-bottom:22px;
+}
+.av-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--o)}
+.av-title{font-size:clamp(1.9rem,2.8vw,2.5rem);font-weight:900;line-height:1.4;margin-bottom:16px;position:relative;color:#fff}
+.av-title span{color:#ffb28a}
+.av-sub{font-size:.98rem;color:rgba(255,255,255,.72);line-height:1.85;max-width:360px;position:relative;margin-bottom:32px}
+
+.av-badges{display:flex;flex-wrap:wrap;gap:10px;position:relative}
+.av-badge{
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
+  border-radius:40px;padding:8px 16px 8px 14px;
+  font-size:.82rem;font-weight:700;color:#fff;
+  display:flex;align-items:center;gap:7px;flex-direction:row-reverse;
+  transition:background .2s, border-color .2s, transform .2s;
+}
+.av-badge:hover{background:rgba(255,255,255,.16);border-color:rgba(255,178,138,.45);transform:translateY(-1px)}
+.av-badge svg{width:15px;height:15px;flex-shrink:0;color:#ffb28a}
+
+.av-quote{
+  position:relative;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;padding:20px 22px;max-width:420px;text-align:right;margin-top:28px;
+}
+.av-quote-text{font-size:.86rem;line-height:1.8;color:rgba(255,255,255,.85);font-style:italic}
+.av-quote-author{margin-top:8px;font-size:.78rem;font-weight:700;color:#ffb28a}
+
+/* ── PANNEAU DROIT  crème / blanc ── */
+.auth-form-side{
+  border-radius:24px;background:var(--cream);
+  box-shadow:0 20px 50px rgba(0,0,0,.14);
+  padding:44px 44px;display:flex;align-items:center;justify-content:center;
+}
+.auth-box{width:100%;max-width:560px}
+
+.auth-title{font-size:1.7rem;font-weight:900;margin-bottom:6px;color:var(--p)}
+.auth-sub{color:var(--txm);font-size:.88rem;margin-bottom:24px;line-height:1.7}
+.auth-sub a{color:var(--c);font-weight:700;text-decoration:none}
+.auth-sub a:hover{text-decoration:underline}
+
+/* Bannière message */
+.form-banner{
+  display:none;align-items:center;gap:10px;
+  padding:12px 14px;border-radius:12px;font-size:.85rem;font-weight:700;
+  margin-bottom:16px;line-height:1.6;
+}
+.form-banner.show{display:flex}
+.form-banner.is-error{background:var(--errl);color:var(--err)}
+.form-banner.is-success{background:#EAF7EE;color:var(--ok)}
+.form-banner svg{width:18px;height:18px;flex-shrink:0}
+
+/* Formulaire */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.form-group.full{grid-column:1 / -1}
+
+.form-section-title{
+  font-size:.78rem;font-weight:800;color:var(--pm);
+  text-transform:uppercase;letter-spacing:.08em;
+  margin-top:6px;margin-bottom:-2px;
+  grid-column:1 / -1;
+  padding-bottom:6px;border-bottom:1.5px solid var(--pl);
+}
+
+/* ── Champs flottants ── */
+.f-field{position:relative}
+.f-field input{
+  width:100%;padding:19px 16px 7px;
+  border:1.5px solid var(--bd);border-radius:12px;
+  font-family:"Cairo",sans-serif;font-size:.92rem;color:var(--tx);
+  background:var(--w);outline:none;
+  transition:border-color .2s, box-shadow .2s;
+}
+.f-field input::placeholder{color:transparent}
+.f-field label{
+  position:absolute;right:16px;top:15px;
+  font-size:.88rem;color:#9b9791;font-weight:600;
+  pointer-events:none;transform-origin:right center;
+  transition:transform .18s ease, top .18s ease, color .18s ease;
+}
+.f-field label .req{color:var(--o);margin-right:2px}
+.f-field input:focus{border-color:var(--pm);box-shadow:0 0 0 3px rgba(91,45,158,.12)}
+.f-field input:focus + label,
+.f-field input:not(:placeholder-shown) + label{
+  top:6px;transform:scale(.7);color:var(--pm);
+}
+.f-field input[aria-invalid="true"]{border-color:var(--err)}
+.f-field input[aria-invalid="true"]:focus{box-shadow:0 0 0 3px rgba(216,52,42,.14)}
+
+/* Select niveau  label statique (au-dessus) */
+.sel-group{display:flex;flex-direction:column;gap:6px}
+.sel-group label{font-size:.85rem;font-weight:700;color:var(--txm)}
+.sel-group label .req{color:var(--o);margin-right:2px}
+.select-niveau{
+  width:100%;padding:13px 16px;
+  border:1.5px solid var(--bd);border-radius:12px;
+  font-family:"Cairo",sans-serif;font-size:.92rem;color:var(--tx);
+  background:var(--w);outline:none;cursor:pointer;
+  transition:border-color .2s, box-shadow .2s;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235B2D9E' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:12px center;padding-left:36px;
+}
+.select-niveau:focus{border-color:var(--pm);box-shadow:0 0 0 3px rgba(91,45,158,.12)}
+.select-niveau[aria-invalid="true"]{border-color:var(--err)}
+.select-niveau option[value=""]{color:#bbb}
+
+.field-error{
+  display:none;font-size:.75rem;font-weight:700;color:var(--err);
+  align-items:center;gap:5px;margin-top:5px;
+}
+.field-error.show{display:flex}
+.field-error svg{width:12px;height:12px;flex-shrink:0}
+
+@keyframes shake{
+  10%,90%{transform:translateX(-1px)} 20%,80%{transform:translateX(2px)}
+  30%,50%,70%{transform:translateX(-4px)} 40%,60%{transform:translateX(4px)}
+}
+.shake{animation:shake .5s}
+
+.input-password input{padding-left:44px}
+.pw-toggle{
+  position:absolute;left:12px;top:13px;
+  background:none;border:none;cursor:pointer;color:#9b9791;padding:4px;
+  display:flex;align-items:center;transition:color .2s;
+}
+.pw-toggle:hover{color:var(--pm)}
+.pw-toggle svg{width:17px;height:17px}
+.pw-toggle .icon-off{display:none}
+.pw-toggle[aria-pressed="true"] .icon-on{display:none}
+.pw-toggle[aria-pressed="true"] .icon-off{display:block}
+
+/* Indicateur de force du mot de passe */
+.pw-strength{display:flex;gap:4px;margin-top:7px}
+.pw-strength i{flex:1;height:4px;border-radius:3px;background:var(--bd);transition:background .25s}
+.pw-strength-label{font-size:.72rem;color:var(--txm);margin-top:4px;font-weight:600}
+
+.pw-match{font-size:.75rem;font-weight:700;margin-top:5px;display:none;align-items:center;gap:5px}
+.pw-match.show{display:flex}
+.pw-match.ok{color:var(--ok)}
+.pw-match.bad{color:var(--err)}
+.pw-match svg{width:12px;height:12px}
+
+.terms-row{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.84rem;color:var(--txm);line-height:1.6;
+}
+.terms-row input[type=checkbox]{
+  width:18px;height:18px;min-width:18px;
+  padding:0;border-radius:5px;margin-top:2px;cursor:pointer;
+  accent-color:var(--pm);
+}
+.terms-row a{color:var(--c);font-weight:700;text-decoration:none}
+.terms-row a:hover{text-decoration:underline}
+
+.btn-submit{
+  width:100%;padding:16px;margin-top:16px;
+  background:var(--pm);color:#fff;border:none;border-radius:12px;
+  font-family:"Cairo",sans-serif;font-size:1rem;font-weight:900;
+  cursor:pointer;transition:all .2s;letter-spacing:.02em;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 10px 24px rgba(61,26,110,.22);
+}
+.btn-submit:hover:not(:disabled){background:var(--p);transform:translateY(-1px);box-shadow:0 12px 28px rgba(61,26,110,.3)}
+.btn-submit:active:not(:disabled){transform:none}
+.btn-submit:disabled{opacity:.85;cursor:default}
+.btn-submit.is-success{background:var(--ok);box-shadow:0 10px 24px rgba(22,163,74,.22)}
+
+.spinner{width:16px;height:16px;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .7s linear infinite;display:none;flex-shrink:0}
+.btn-submit.is-loading .spinner{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.auth-switch{text-align:center;margin-top:18px;font-size:.9rem;color:var(--txm)}
+.auth-switch a{color:var(--pm);font-weight:900;text-decoration:none}
+.auth-switch a:hover{text-decoration:underline}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .auth-wrap{grid-template-columns:1fr;padding:16px 16px 40px}
+  .auth-visual{display:none}
+  .auth-form-side{padding:36px 24px}
+}
+@media(max-width:480px){
+  .form-grid{grid-template-columns:1fr}
+  .auth-title{font-size:1.4rem}
+  .auth-form-side{padding:26px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html">
+    <img src="assets\svg\archipel white.svg" class="logo-img-nav" alt="Archipel"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <span class="logo-fallback" style="display:none">
+      <span class="l-arc">ARCHIPEL</span>
+      <span class="l-ml">ML</span>
+    </span>
+  </a>
+  <div class="nav-slogan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <span>قراية تهزك لبعيد</span>
+  </div>
+
+  <a class="nav-back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M19 12H5M12 5l7 7-7 7"/>
+    </svg>
+    العودة إلى الرئيسية
+  </a>
+</nav>
+
+<!-- MAIN -->
+<div class="auth-wrap">
+
+  <!-- PANNEAU GAUCHE -->
+  <div class="auth-visual">
+
+    <div class="av-deco av-deco-1" aria-hidden="true">
+      <svg width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3">
+        <circle cx="12" cy="12" r="9.5"/>
+        <path d="M14.8 9.2l-1.3 4.3-4.3 1.3 1.3-4.3z" fill="#E8520A" stroke="none"/>
+        <circle cx="12" cy="12" r="1.1" fill="#fff" stroke="none"/>
+      </svg>
+    </div>
+    <div class="av-deco av-deco-2" aria-hidden="true">
+      <svg width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3">
+        <circle cx="12" cy="5" r="1.6"/>
+        <path d="M12 7v13M7 12H3a9 9 0 0 0 9 9 9 9 0 0 0 9-9h-4"/>
+        <path d="M9 9h6"/>
+      </svg>
+    </div>
+
+    <span class="av-eyebrow">ابدأ رحلتك اليوم</span>
+    <h2 class="av-title">انضم إلى عائلة <span>ARCHIPEL MIXED LEARNING</span></h2>
+    <p class="av-sub">تعليم حضوري + تعلّم عن بُعد في تجربة متكاملة. نرافق تلميذك من السنة الرابعة إلى البكالوريا.</p>
+
+    <div class="av-badges">
+      <span class="av-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        +5000 تلميذ
+      </span>
+      <span class="av-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>
+        +90 أستاذ
+      </span>
+      <span class="av-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V7l7-4 7 4v14"/><path d="M3 21h18"/><path d="M9 9h1M14 9h1M9 13h1M14 13h1M10 21v-4h4v4"/></svg>
+        6 مراكز
+      </span>
+      <span class="av-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        حصص أونلاين
+      </span>
+      <span class="av-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        9 سنوات خبرة
+      </span>
+    </div>
+
+    <div class="av-quote">
+      <p class="av-quote-text">
+        "أنا راضي برشة وعندي إحساس بالانتماء. الفريق الإداري مهتم برشة بأولادنا، يسمع ويقف معاهم ديما"
+      </p>
+      <p class="av-quote-author"> وانيس كامل، والد محمد عزيز  السنة الثامنة</p>
+    </div>
+  </div>
+
+  <!-- FORMULAIRE DROIT -->
+  <div class="auth-form-side">
+    <div class="auth-box">
+      <h1 class="auth-title">إنشاء حساب جديد</h1>
+      <p class="auth-sub">
+        هل لديك حساب بالفعل؟
+        <a href="connexion.html">تسجيل الدخول</a>
+      </p>
+
+      <div class="form-banner" id="formBanner" role="alert" aria-live="polite"></div>
+
+      <form id="inscriptionForm" onsubmit="handleSubmit(event)" novalidate>
+        <div class="form-grid">
+
+          <div class="form-section-title">المعلومات الشخصية</div>
+
+          <div class="form-group f-field">
+            <input type="text" id="prenom" name="prenom" placeholder=" " required>
+            <label for="prenom">الاسم <span class="req">*</span></label>
+          </div>
+          <div class="form-group f-field">
+            <input type="text" id="nom" name="nom" placeholder=" " required>
+            <label for="nom">اللقب <span class="req">*</span></label>
+          </div>
+
+          <div class="form-group f-field">
+            <input type="email" id="email" name="email" placeholder=" " required aria-describedby="emailErr">
+            <label for="email">البريد الإلكتروني <span class="req">*</span></label>
+            <span class="field-error" id="emailErr">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              بريد إلكتروني غير صحيح
+            </span>
+          </div>
+          <div class="form-group f-field">
+            <input type="tel" id="phone" name="phone" placeholder=" " required>
+            <label for="phone">رقم الهاتف <span class="req">*</span></label>
+          </div>
+
+          <div class="form-group full sel-group">
+            <label for="niveau">المستوى الدراسي <span class="req">*</span></label>
+            <select class="select-niveau" id="niveau" name="niveau" required>
+              <option value="" disabled selected> اختر مستواك الدراسي </option>
+              <optgroup label="🟠 ابتدائي  Primaire">
+                <option value="4prim">السنة الرابعة ابتدائي  4ème primaire</option>
+                <option value="5prim">السنة الخامسة ابتدائي  5ème primaire</option>
+                <option value="6prim">السنة السادسة ابتدائي  6ème primaire (مناظرة)</option>
+              </optgroup>
+              <optgroup label="🟣 إعدادي  Collège">
+                <option value="7eme">السنة السابعة  7ème</option>
+                <option value="8eme">السنة الثامنة  8ème</option>
+                <option value="9eme">السنة التاسعة  9ème (مناظرة)</option>
+              </optgroup>
+              <optgroup label="🔵 ثانوي  Lycée">
+                <option value="1sec">السنة الأولى ثانوي  1ère année secondaire</option>
+                <option value="2sec">السنة الثانية ثانوي  2ème année secondaire</option>
+                <option value="3sec">السنة الثالثة ثانوي  3ème année secondaire</option>
+              </optgroup>
+              <optgroup label="🏅 باكالوريا  Terminale">
+                <option value="bac">السنة الرابعة ثانوي  Bac (Terminale)</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-section-title">الأمان</div>
+
+          <div class="form-group f-field input-password">
+            <input type="password" id="pw1" name="password" placeholder=" " required>
+            <label for="pw1">كلمة السر <span class="req">*</span></label>
+            <button type="button" class="pw-toggle" id="pwToggle1" onclick="togglePw('pw1','pwToggle1')" aria-pressed="false" aria-label="إظهار كلمة السر">
+              <svg class="icon-on" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="icon-off" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.9 19.9 0 0 1 4.22-5.44M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a19.86 19.86 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+            </button>
+            <div class="pw-strength" id="pwStrength"><i></i><i></i><i></i></div>
+            <div class="pw-strength-label" id="pwStrengthLabel">8 أحرف على الأقل</div>
+          </div>
+
+          <div class="form-group f-field input-password">
+            <input type="password" id="pw2" name="password2" placeholder=" " required>
+            <label for="pw2">تأكيد كلمة السر <span class="req">*</span></label>
+            <button type="button" class="pw-toggle" id="pwToggle2" onclick="togglePw('pw2','pwToggle2')" aria-pressed="false" aria-label="إظهار كلمة السر">
+              <svg class="icon-on" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="icon-off" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.9 19.9 0 0 1 4.22-5.44M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a19.86 19.86 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+            </button>
+            <div class="pw-match" id="pwMatch">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>متطابقتان</span>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <div class="terms-row">
+              <input type="checkbox" id="terms" name="terms" required>
+              <label for="terms" style="font-weight:400">
+                بإنشاء هذا الحساب، فإنك توافق على
+                <a href="#">شروط الاستخدام</a> و
+                <a href="#">سياسة الخصوصية</a>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span class="spinner"></span>
+          <span class="btn-label">إنشاء الحساب ←</span>
+        </button>
+
+        <div class="auth-switch">
+          هل لديك حساب؟ <a href="connexion.html">تسجيل الدخول</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function togglePw(id, btnId) {
+  const input = document.getElementById(id);
+  const btn = document.getElementById(btnId);
+  const show = input.type === 'password';
+  input.type = show ? 'text' : 'password';
+  btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+}
+
+/* ── Force du mot de passe ── */
+const pw1El = document.getElementById('pw1');
+pw1El.addEventListener('input', () => {
+  const v = pw1El.value;
+  let score = 0;
+  if (v.length >= 8) score++;
+  if (/[A-Z]/.test(v) && /[a-z]/.test(v)) score++;
+  if (/[0-9]/.test(v) && /[^A-Za-z0-9]/.test(v)) score++;
+  const bars = document.querySelectorAll('#pwStrength i');
+  const colors = ['var(--err)', '#E8A317', 'var(--ok)'];
+  bars.forEach((b, i) => { b.style.background = (i < score && v.length > 0) ? colors[Math.max(score - 1, 0)] : 'var(--bd)'; });
+  const labels = ['ضعيفة جداً', 'مقبولة', 'جيدة', 'قوية'];
+  document.getElementById('pwStrengthLabel').textContent = v.length === 0 ? '8 أحرف على الأقل' : labels[score];
+  checkMatch();
+});
+document.getElementById('pw2').addEventListener('input', checkMatch);
+
+function checkMatch() {
+  const pw1 = pw1El.value, pw2 = document.getElementById('pw2').value;
+  const el = document.getElementById('pwMatch');
+  if (pw2.length === 0) { el.classList.remove('show'); return; }
+  el.classList.add('show');
+  if (pw1 === pw2) {
+    el.classList.remove('bad'); el.classList.add('ok');
+    el.querySelector('span').textContent = 'متطابقتان';
+  } else {
+    el.classList.remove('ok'); el.classList.add('bad');
+    el.querySelector('span').textContent = 'كلمتا السر غير متطابقتين';
+  }
+}
+
+/* ── Bannière ── */
+function showBanner(msg, type) {
+  const b = document.getElementById('formBanner');
+  b.className = 'form-banner show is-' + type;
+  b.innerHTML = (type === 'error'
+    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>'
+  ) + '<span>' + msg + '</span>';
+}
+function hideBanner() { document.getElementById('formBanner').className = 'form-banner'; }
+
+function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+
+function handleSubmit(e) {
+  e.preventDefault();
+  hideBanner();
+  const form = e.target;
+  const box = document.querySelector('.auth-box');
+
+  const emailInput = document.getElementById('email');
+  const emailErr = document.getElementById('emailErr');
+  const pw1 = pw1El.value;
+  const pw2 = document.getElementById('pw2').value;
+  const niveau = document.getElementById('niveau');
+  const terms = document.getElementById('terms');
+
+  let ok = true;
+  const emailOk = validEmail(emailInput.value);
+  emailInput.setAttribute('aria-invalid', emailOk ? 'false' : 'true');
+  emailErr.classList.toggle('show', !emailOk);
+  if (!emailOk) ok = false;
+
+  if (pw1.length < 8 || pw1 !== pw2) {
+    document.getElementById('pw2').setAttribute('aria-invalid', 'true');
+    checkMatch();
+    ok = false;
+  } else {
+    document.getElementById('pw2').setAttribute('aria-invalid', 'false');
+  }
+
+  if (!niveau.value) { niveau.setAttribute('aria-invalid', 'true'); ok = false; }
+  else niveau.setAttribute('aria-invalid', 'false');
+
+  if (!terms.checked) ok = false;
+
+  if (!ok) {
+    box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake');
+    let msg = 'من فضلك تحقق من الحقول المذكورة أعلاه.';
+    if (pw1.length > 0 && pw1.length < 8) msg = 'يجب أن تحتوي كلمة السر على 8 أحرف على الأقل.';
+    else if (pw1 !== pw2) msg = 'كلمتا السر غير متطابقتين.';
+    else if (!terms.checked) msg = 'يجب الموافقة على شروط الاستخدام لإتمام التسجيل.';
+    showBanner(msg, 'error');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  const label = btn.querySelector('.btn-label');
+  btn.classList.add('is-loading');
+  btn.disabled = true;
+  label.textContent = 'جارٍ الإنشاء...';
+
+  setTimeout(() => {
+    btn.classList.remove('is-loading');
+    btn.classList.add('is-success');
+    label.textContent = '✓ تم إنشاء الحساب بنجاح!';
+    showBanner('مرحباً بك في أرخبيل! جارٍ تحويلك...', 'success');
+  }, 1600);
+}
+</script>
+</body>
+</html>

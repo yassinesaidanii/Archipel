@@ -1,0 +1,32 @@
+/* Index only — HERO video background */
+
+/* If you want to disable / remove the video CSS later, just delete this file and
+   keep index.html without changing autres pages. */
+
+.hero-video-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  z-index:0;
+}
+
+.hero-video-bg{filter:saturate(1.02) contrast(1.02)}
+
+/* Overlay class */
+.hero-video-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(150deg,rgba(61,26,110,.60) 0%, rgba(250,250,248,.20) 55%, rgba(232,82,10,.22) 100%);
+  pointer-events:none;
+}
+
+.hero-inner{z-index:2;position:relative}
+
+@media(max-width:768px){
+  .hero-video-overlay{background:rgba(61,26,110,.55)}
+}
+
