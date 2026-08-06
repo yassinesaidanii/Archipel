@@ -404,7 +404,7 @@ function playJourneyInline(idx) {
   embed.innerHTML = `
     ${thumb ? `<img src="${thumb}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">` : ''}
     <iframe id="jv-iframe-${idx}"
-      src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&rel=0&modestbranding=1${originParam}"
+      src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&rel=0&modestbranding=1&controls=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0${originParam}"
       style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:1;background:transparent"
       allow="autoplay; encrypted-media; fullscreen"
       allowfullscreen></iframe>`;
