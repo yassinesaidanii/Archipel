@@ -1515,18 +1515,22 @@
      url  : lien vidéo normal (YouTube/Facebook) — openVideo() du
             site se charge de tout (détection + lecteur adapté)
      ═══════════════════════════════════════════════════════════ */
-  var LESSONS = [
-    { subject:'الرياضيات', level:'ابتدائي', topic:'الأعداد والعمليات', grad:'linear-gradient(150deg, var(--p), var(--pm))', url:'',
-      icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="12" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>' },
-    { subject:'الفيزياء', level:'ثانوي', topic:'الكهرباء في حياتنا اليومية', grad:'linear-gradient(150deg, var(--c), #0f8aa3)', url:'',
-      icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>' },
-    { subject:'الكيمياء', level:'بكالوريا', topic:'التفاعلات الكيميائية', grad:'linear-gradient(150deg, var(--o), #c15208)', url:'',
-      icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 3h6M10 3v6l-6 9a2 2 0 002 3h12a2 2 0 002-3l-6-9V3"/></svg>' },
-    { subject:'العربية', level:'إعدادي', topic:'قواعد الإعراب', grad:'linear-gradient(150deg, var(--pm), #7d4bc9)', url:'',
-      icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>' },
-    { subject:'الإيقاظ العلمي', level:'ابتدائي', topic:'الوسط والمحيط', grad:'linear-gradient(150deg, var(--gold), #b5810f)', url:'',
-      icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg>' }
-  ];
+var LESSONS = [
+  { subject:'الرياضيات', level:'إعدادي', topic:'الكسور والأعداد النسبية', grad:'linear-gradient(150deg, var(--p), var(--pm))', url:'https://youtu.be/wXUFq4Wk_LY',
+    icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="12" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>' },
+
+  { subject:'الفيزياء', level:'بكالوريا', topic:'الحركة والقوى', grad:'linear-gradient(150deg, var(--c), #0f8aa3)', url:'https://youtu.be/T5jFE1wSLBY',
+    icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>' },
+
+  { subject:'الفلسفة', level:'بكالوريا', topic:'الوعي والحرية', grad:'linear-gradient(150deg, var(--o), #c15208)', url:'https://youtu.be/n5-AoSsR3AY',
+    icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 3h6M10 3v6l-6 9a2 2 0 002 3h12a2 2 0 002-3l-6-9V3"/></svg>' },
+
+  { subject:'الفرنسية', level:'ثانوي', topic:'Compréhension et expression écrite', grad:'linear-gradient(150deg, var(--pm), #7d4bc9)', url:'https://youtu.be/z191iim2pPE',
+    icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>' },
+
+  { subject:'الإنجليزية', level:'إعدادي', topic:'Grammar and Vocabulary', grad:'linear-gradient(150deg, var(--gold), #b5810f)', url:'https://youtu.be/ZDG-IDBQtRY',
+    icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg>' }
+];
 
   document.getElementById('lessonsTrack').innerHTML = LESSONS.map(function(l){
     var safeUrl = (l.url || '').replace(/'/g, "\\'");
