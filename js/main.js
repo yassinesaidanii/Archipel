@@ -480,12 +480,12 @@ function journeyRender(idx) {
           : ''}
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(61,26,110,.55) 100%)"></div>
         ${!thumb ? `<div class="jv-placeholder" style="background:${s.gradient}"><span class="jv-placeholder-icon">${s.icon}</span><span class="jv-placeholder-label">${s.title}</span></div>` : ''}
+        <span class="jv-step-badge">الخطوة ${idx+1} من ${JOURNEY_STEPS.length}</span>
         ${hasUrl ? `<button class="journey-play-btn" onclick="playJourneyInline(${idx})" aria-label="شاهد الفيديو">&#9654;</button>` : ''}
       </div>`;
 
     card.innerHTML = videoArea + `
       <div class="journey-video-body">
-        <div class="jvb-num">الخطوة ${idx+1} من ${JOURNEY_STEPS.length}</div>
         <span class="jvb-icon">${s.icon}</span>
         <div class="jvb-text">
           <h3>${s.title}</h3>
