@@ -118,7 +118,7 @@
   /* ── ABOUT VIDEO ── */
   function openAboutVideo() {
     // ⚠️ Remplace ABOUT_VIDEO_URL par le lien de ta vidéo Facebook/YouTube
-    const ABOUT_VIDEO_URL = 'https://www.youtube.com/watch?v=aOBSu51h-ow';
+    const ABOUT_VIDEO_URL = 'https://youtu.be/otvZYey5Slk';
     if (!ABOUT_VIDEO_URL || ABOUT_VIDEO_URL === 'ABOUT_VIDEO_URL') {
       alert('أضف رابط الفيديو في ملف index.html — ابحث عن ABOUT_VIDEO_URL');
       return;
