@@ -761,7 +761,8 @@
 <body>
 <!-- ══ NAV ══════════════════════════════════ -->
 <nav class="nav" id="mainNav">
-  <a href="index.html">
+  <a href="index.html" target="_blank">
+    <!-- Logo sans fond avec texte mauve pour fond blanc -->
     <img fetchpriority="high" decoding="async" src="assets/svg/archipel black.svg" class="logo-img-nav" alt="Archipel"
       onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <span class="logo-fallback" style="display:none">
@@ -773,10 +774,15 @@
   <ul class="nav-links">
     <li><a href="index.html">الرئيسية</a></li>
     <li><a href="about.html">من نحن</a></li>
+    <li class="nav-dropdown" id="nav-offres-list">
+      <a href="javascript:void(0)" onclick="toggleOffresDropdown(event)">المنصة <span class="nav-arrow">▾</span></a>
+      <ul class="nav-drop-menu">
+        <li><a href="plateforme.html">فضاء التلميذ</a></li>
+      </ul>
+    </li>
     <li><a href="centres.html">مراكزنا</a></li>
     <li><a href="ressources.html">مكتبتنا</a></li>
-    <li><a href="videotheque.html">فيديوهاتنا</a></li>
-    <li><a href="plateforme.html" style="color:var(--pm)">فضاء التميّز</a></li>
+    <li><a href="blog.html">فيديوهاتنا</a></li>
     <li class="nav-dropdown" id="nav-offres-list">
       <a href="javascript:void(0)" onclick="toggleOffresDropdown(event)">عروضنا <span class="nav-arrow">▾</span></a>
       <ul class="nav-drop-menu">
@@ -786,6 +792,7 @@
         <li><a href="offre-bac.html">بكالوريا</a></li>
       </ul>
     </li>
+    <li><a href="workshops.html">ورشاتنا</a></li>
   </ul>
 
   <div class="nav-actions">
@@ -798,14 +805,20 @@
   </button>
 </nav>
 
+<!-- Mobile drawer -->
 <div class="nav-drawer" id="navDrawer">
   <ul>
     <li><a href="index.html" onclick="closeDrawer()">الرئيسية</a></li>
     <li><a href="about.html" onclick="closeDrawer()">من نحن</a></li>
+    <li class="drawer-has-sub">
+      <button type="button" class="drawer-sub-toggle" onclick="toggleDrawerSub(event)">المنصة <span class="nav-arrow">▾</span></button>
+      <ul class="drawer-sub-menu">
+        <li><a href="offre-primaire.html" onclick="closeDrawer()">فضاء التلميذ</a></li>
+      </ul>
+    </li>
     <li><a href="centres.html" onclick="closeDrawer()">مراكزنا</a></li>
     <li><a href="ressources.html" onclick="closeDrawer()">مكتبتنا</a></li>
-    <li><a href="videotheque.html" onclick="closeDrawer()">فيديوهاتنا</a></li>
-    <li><a href="plateforme.html" onclick="closeDrawer()">فضاء التميّز</a></li>
+    <li><a href="blog.html" onclick="closeDrawer()">فيديوهاتنا</a></li>
     <li class="drawer-has-sub">
       <button type="button" class="drawer-sub-toggle" onclick="toggleDrawerSub(event)">عروضنا <span class="nav-arrow">▾</span></button>
       <ul class="drawer-sub-menu">
@@ -815,11 +828,13 @@
         <li><a href="offre-bac.html" onclick="closeDrawer()">بكالوريا</a></li>
       </ul>
     </li>
+    <li><a href="workshops.html" onclick="closeDrawer()">ورشاتنا</a></li>
   </ul>
   <div class="nav-drawer-btns">
     <a class="btn-outline" href="connexion.html">تسجيل الدخول</a>
     <a class="btn-purple" href="inscription.html" onclick="closeDrawer()">سجل مجاناً ←</a>
   </div>
+</div>
 </div>
 
 <!-- ══ HERO ══════════════════════════════════ -->
