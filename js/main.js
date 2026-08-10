@@ -278,35 +278,35 @@
     {
       icon:'<img src="assets/icons/Asset 2.svg" alt="يفهم الدرس" class="journey-step-icon">', label:'يفهم الدرس بوضوح',
       title:'يفهم الدرس بوضوح',
-      desc:'فيديوهات مبسّطة تشرح كل درس خطوة بخطوة — حتى تصبح المادة واضحة قبل الحصة أو بعدها.',
+      desc:'فيديوهات مبسّطة، تشرح كل درس خطوة بخطوة، حتى تصبح المادة واضحة قبل الحصة أو بعدها.',
       thumb:'hero-plat.png', url:'https://youtu.be/NyeJXvfUf1E',
       gradient:'linear-gradient(135deg,#3D1A6E,#6B34C5)'
     },
     {
       icon:'<img src="assets/icons/Asset 3.svg" alt="حصص مباشرة"  class="journey-step-icon">', label:'حصص مباشرة',
       title:'حصص مباشرة',
-      desc:'حصص مباشرة للإجابة على الأسئلة وتثبيت الفهم — تفاعل حقيقي مع الأستاذ في الوقت الفعلي.',
+      desc:'فرصة للإجابة على الأسئلة وتثبيت الفهم :  تفاعل حقيقي مع الأستاذ في الوقت الفعلي',
       thumb:'explain-plat.png', url:'https://youtu.be/QUXm4_VZHkc',
       gradient:'linear-gradient(135deg,#1a4d8e,#2563eb)'
     },
     {
       icon:'<img src="assets/icons/Asset 4.svg" alt="يطبّق ما تعلّمه" class="journey-step-icon">', label:'يطبّق ما تعلّمه',
       title:'يطبّق ما تعلّمه',
-      desc:'تمارين مرفقة بالإصلاح لتثبيت المكتسبات — يتدرب على أمثلة حقيقية ويتحقق من إجاباته فورًا.',
+      desc:'تمارين مرفقة بالإصلاح لتثبيت المكتسبات، يتدرب بها على أمثلة حقيقية ويتحقق من إجاباته فورًا',
       thumb:'hero-plat.png', url:'https://youtu.be/kCG5rYPvVTM',
       gradient:'linear-gradient(135deg,#6b3d1e,#d97706)'
     },
     {
       icon:'<img src="assets/icons/Asset 5.svg" alt="يراجع في أي وقت" class="journey-step-icon">', label:'يراجع في أي وقت',
       title:'يراجع في أي وقت',
-      desc:'إمكانية الرجوع للحصص متى احتاج — لا يفوّته درس، ولا يبقى عالقًا في نقطة لم يفهمها.',
+      desc:'إمكانية الرجوع للحصص متى احتاج، فلا يفوّته درس، ولا يبقى عالقًا في نقطة لم يفهمها.',
       thumb:'explain-plat.png', url:'https://youtu.be/D3RYM-kwCR0',
       gradient:'linear-gradient(135deg,#1a5e3a,#16a34a)'
     },
     {
       icon:'<img src="assets/icons/Asset 6.svg" alt="يتابع تقدّمه" class="journey-step-icon">', label:'يتابع تقدّمه',
       title:'يتابع تقدّمه',
-      desc:'اختبارات تساعده على معرفة مستواه وتحسينه — ابنك يعرف أين هو، وإلى أين يتجه.',
+      desc:'اختبارات تساعده على معرفة مستواه وتحسينه، ابنك يعرف أين هو وإلى أين يتجه.',
       thumb:'hero-plat.png', url:'https://youtu.be/hkKtMDQL7CA',
       gradient:'linear-gradient(135deg,#5b1a6e,#9333ea)'
     },
