@@ -167,6 +167,10 @@
 .res-card-btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(91,45,158,.3)}
 .res-card-btn.ghost{background:var(--bg);color:var(--tx);border:1px solid var(--bd)}
 .res-card-btn.ghost:hover{border-color:var(--pm);color:var(--pm)}
+.res-card-btn.correction{background:var(--c);color:#fff}
+.res-card-btn.correction:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.res-card-actions{flex-wrap:wrap}
+.res-card-actions .res-card-btn{min-width:90px}
 
 /* ── vue liste (alternative) ── */
 .res-grid.is-list{grid-template-columns:1fr}
@@ -753,17 +757,32 @@
     "fileUrl": "assets/pdf/Arabe bac_3.pdf"
   },
   {
+    "name": "التصرف في النص: منهجية التفسير وأنواع الحجج ووظائفها",
+    "sub": "الرابعة ثانوي شعبة علمية",
+    "niveau": "بكالوريا",
+    "annee": "4ème Bac",
+    "categorie": "correction",
+    "categorieLabel": "منهجية مع الإصلاح",
+    "date": "10 أغسطس 2026",
+    "dateSort": 20260810,
+    "matiere": "عربية",
+    "tags": ["عربية", "bac", "منهجية التفسير", "أنواع الحجج", "الأستاذة نجاة", "archipel"],
+    "fileUrl": "assets/pdf/Arabe bac_4.pdf",
+    "correctionUrl": "assets/pdf/Arabe bac_4_correction.pdf"
+  },
+  {
     "name": "Français - Les outils d'analyse textuelle",
     "sub": "4ème Année Baccalaureate",
     "niveau": "بكالوريا",
     "annee": "4ème Bac",
-    "categorie": "cours",
-    "categorieLabel": "دروس وتمارين",
+    "categorie": "correction",
+    "categorieLabel": "دروس مع الإصلاح",
     "date": "10 أغسطس 2026",
     "dateSort": 20260810,
     "matiere": "فرنسية",
-    "tags": ["français", "bac", "analyse textuelle", "Mr NEBIL", "archipel"],
-    "fileUrl": "assets/pdf/Franais Bac_3.pdf"
+    "tags": ["français", "bac", "analyse textuelle", "explication de texte", "situation d'énonciation", "Mr NEBIL", "archipel"],
+    "fileUrl": "assets/pdf/Franais Bac_3.pdf",
+    "correctionUrl": "assets/pdf/Franais Bac_correction_3.pdf"
   },
   {
     "name": "الفلسفة - مطلب الكلي الكوني (الإنساني بين الوحدة والكثرة)",
@@ -916,6 +935,10 @@
         '<a class="res-card-btn primary" href="' + url + '" download title="تحميل الملف">' +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg> تحميل' +
         '</a>' +
+        (r.correctionUrl ?
+        '<a class="res-card-btn correction" href="' + r.correctionUrl + '" download title="تحميل الإصلاح">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> الإصلاح' +
+        '</a>' : '') +
         '<button class="res-card-btn ghost btn-preview" data-url="' + url + '" data-title="' + r.name + '" title="معاينة الملف">' +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg> معاينة' +
         '</button>' +
