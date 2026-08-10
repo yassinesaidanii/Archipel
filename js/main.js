@@ -293,7 +293,7 @@
       icon:'<img src="assets/icons/Asset 4.svg" alt="يطبّق ما تعلّمه" class="journey-step-icon">', label:'يطبّق ما تعلّمه',
       title:'يطبّق ما تعلّمه',
       desc:'تمارين مرفقة بالإصلاح لتثبيت المكتسبات، يتدرب بها على أمثلة حقيقية ويتحقق من إجاباته فورًا',
-      thumb:'hero-plat.png', url:'https://youtu.be/kCG5rYPvVTM',
+      thumb:'hero-plat.png', url:'https://youtu.be/q9_a9V2lOPk',
       gradient:'linear-gradient(135deg,#6b3d1e,#d97706)'
     },
     {
