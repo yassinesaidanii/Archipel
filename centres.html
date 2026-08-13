@@ -927,8 +927,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
 
 </section>
 
-<!-- ══ 2. CENTRES MAP ══ -->
-  <!-- ▶ ▶ ▶ CENTRES ILES (from Example Centres.html) ▶ ▶ ▶ -->
+<!-- ▶ ▶ ▶ CENTRES ILES (from Example Centres.html) ▶ ▶ ▶ -->
   <section id="centres-sec" style="background:#06b3ff;padding:90px 24px;position:relative;overflow:hidden">
 
     <!-- Sea background -->
@@ -991,10 +990,10 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
         <g id="isle-connections-g"></g>
       </svg>
 
-      <!-- Islands  pentagon "flower" layout, hub = المنزه (matches reference map) -->
+      <!-- Islands pentagon "flower" layout, hub = المنزه (matches reference map) -->
       <div id="isle-grid" style="position:relative;z-index:3;width:100%;height:600px">
 
-      <!-- جزيرة 0: العوينة (phare)  HUB الوسط -->
+      <!-- جزيرة 0: العوينة (phare) HUB الوسط -->
       <div class="isle-card reveal" onclick="openIsle(0)" tabindex="0" role="button" aria-label="اكتشف مركز العوينة" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openIsle(0)}" style="position:absolute;left:51%;top:66%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;cursor:pointer;transition:transform .3s" onmouseenter="this.style.transform='translate(-50%,-50%) translateY(-10px)'" onmouseleave="this.style.transform='translate(-50%,-50%)'">
         <div style="animation:isleFloat 3.5s ease-in-out infinite,treasureGlow 2.5s ease-in-out infinite;filter:drop-shadow(0 16px 32px rgba(0,0,0,.35))">
           <img loading="lazy" decoding="async" width="210" height="200" src="assets/svg/ile/Asset 7.svg" alt="مركز العوينة">
@@ -1007,7 +1006,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
         </div>
       </div>
 
-      <!-- جزيرة 1: بومهل (pergola/cascade)  يسار أعلى -->
+      <!-- جزيرة 1: بومهل (pergola/cascade) يسار أعلى -->
       <div class="isle-card reveal" onclick="openIsle(1)" tabindex="0" role="button" aria-label="اكتشف مركز بومهل" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openIsle(1)}" style="position:absolute;left:29%;top:37%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;cursor:pointer;transition:transform .3s" onmouseenter="this.style.transform='translate(-50%,-50%) translateY(-10px)'" onmouseleave="this.style.transform='translate(-50%,-50%)'">
         <div style="animation:isleFloat 3.5s ease-in-out .5s infinite;filter:drop-shadow(0 16px 32px rgba(0,0,0,.35))">
           <img loading="lazy" decoding="async" width="190" height="180" src="assets/svg/ile/Asset 3.svg" alt="مركز بومهل">
@@ -1020,7 +1019,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
         </div>
       </div>
 
-      <!-- جزيرة 2: المروج (cabane arbre)  يمين أعلى -->
+      <!-- جزيرة 2: المروج (cabane arbre) يمين أعلى -->
       <div class="isle-card reveal" onclick="openIsle(2)" tabindex="0" role="button" aria-label="اكتشف مركز المروج" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openIsle(2)}" style="position:absolute;left:73%;top:37%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;cursor:pointer;transition:transform .3s" onmouseenter="this.style.transform='translate(-50%,-50%) translateY(-10px)'" onmouseleave="this.style.transform='translate(-50%,-50%)'">
         <div style="animation:isleFloat 3.5s ease-in-out 1s infinite;filter:drop-shadow(0 16px 32px rgba(0,0,0,.35))">
           <img loading="lazy" decoding="async" width="190" height="180" src="assets/svg/ile/Asset 6.svg" alt="مركز المروج">
@@ -1033,7 +1032,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
         </div>
       </div>
 
-      <!-- جزيرة 3: المنزه (champignon)  أعلى الوسط -->
+      <!-- جزيرة 3: المنزه (champignon) أعلى الوسط -->
       <div class="isle-card reveal" onclick="openIsle(3)" tabindex="0" role="button" aria-label="اكتشف مركز المنزه" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openIsle(3)}" style="position:absolute;left:51%;top:9%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;cursor:pointer;transition:transform .3s" onmouseenter="this.style.transform='translate(-50%,-50%) translateY(-10px)'" onmouseleave="this.style.transform='translate(-50%,-50%)'">
         <div style="animation:isleFloat 3.5s ease-in-out 1.5s infinite;filter:drop-shadow(0 16px 32px rgba(0,0,0,.35))">
           <img loading="lazy" decoding="async" width="190" height="150" src="assets/svg/ile/Asset 5.svg" alt="مركز المنزه">
@@ -1046,7 +1045,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
         </div>
       </div>
 
-      <!-- جزيرة 4: باردو (moulin à eau)  يسار أسفل -->
+      <!-- جزيرة 4: باردو (moulin à eau) يسار أسفل -->
       <div class="isle-card reveal" onclick="openIsle(4)" tabindex="0" role="button" aria-label="اكتشف مركز باردو" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openIsle(4)}" style="position:absolute;left:14%;top:90%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;cursor:pointer;transition:transform .3s" onmouseenter="this.style.transform='translate(-50%,-50%) translateY(-10px)'" onmouseleave="this.style.transform='translate(-50%,-50%)'">
         <div style="animation:isleFloat 3.5s ease-in-out 2s infinite;filter:drop-shadow(0 16px 32px rgba(0,0,0,.35))">
           <img loading="lazy" decoding="async" width="190" height="180" src="assets/svg/ile/Asset 4.svg" alt="مركز باردو">
@@ -1059,7 +1058,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
         </div>
       </div>
 
-      <!-- جزيرة 5: المدينة الجديدة (temple)  يمين أسفل -->
+      <!-- جزيرة 5: المدينة الجديدة (temple) يمين أسفل -->
       <div class="isle-card reveal" onclick="openIsle(5)" tabindex="0" role="button" aria-label="اكتشف مركز المدينة الجديدة" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openIsle(5)}" style="position:absolute;left:88%;top:90%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;cursor:pointer;transition:transform .3s" onmouseenter="this.style.transform='translate(-50%,-50%) translateY(-10px)'" onmouseleave="this.style.transform='translate(-50%,-50%)'">
         <div style="animation:isleFloat 3.5s ease-in-out 2.5s infinite;filter:drop-shadow(0 16px 32px rgba(0,0,0,.35))">
           <img loading="lazy" decoding="async" width="190" height="180" src="assets/svg/ile/Asset 2.svg" alt="مركز المدينة الجديدة">
@@ -1083,7 +1082,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
 
   </section>
 
-  <!-- MODAL جزيرة  GRAND FORMAT PAYSAGE -->
+  <!-- MODAL جزيرة GRAND FORMAT PAYSAGE -->
   <style>
   #isle-modal {
     display:none;
@@ -1262,7 +1261,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
   }
   #isle-modal-close:hover { background:rgba(255,255,255,.22); }
 
-  /* CTA wrap  assis en bas de la colonne gauche (non-scrollable), toujours visible */
+  /* CTA wrap assis en bas de la colonne gauche (non-scrollable), toujours visible */
   #isle-modal-cta-wrap {
     flex-shrink:0;
     padding:16px 20px 18px;
@@ -1347,7 +1346,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
             </a>
           </div>
 
-          <!-- CTA  reste toujours visible ici, pas besoin de scroller la colonne droite -->
+          <!-- CTA reste toujours visible ici, pas besoin de scroller la colonne droite -->
           <div id="isle-modal-cta-wrap">
             <a id="isle-modal-cta" href="#inscription" onclick="closeIsleModal()">احجز مكانك في هذه الجزيرة ←</a>
           </div>
@@ -1441,7 +1440,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
   }
   /* Hub island (المنزه) already gets extra glow via its inline animation above */
 
-  /* ── MOBILE: treasure-map absolute layout breaks on small screens  switch to a compact grid ── */
+  /* ── MOBILE: treasure-map absolute layout breaks on small screens switch to a compact grid ── */
   @media(max-width:760px){
     #isle-wrap{ min-height:auto !important; }
     #isle-connections{ display:none !important; } /* dotted trail + compass don't translate to a grid layout */
@@ -1467,7 +1466,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
       gap:.4rem !important;
     }
     /* DOM order: 0=العوينة(hub) 1=بومهل 2=المروج 3=المنزه 4=باردو 5=المدينة الجديدة */
-    #isle-grid .isle-card:nth-child(1){ grid-area:hub; justify-self:center; } /* العوينة  hub, mise en avant */
+    #isle-grid .isle-card:nth-child(1){ grid-area:hub; justify-self:center; } /* العوينة hub, mise en avant */
     #isle-grid .isle-card:nth-child(2){ grid-area:a; } /* بومهل */
     #isle-grid .isle-card:nth-child(3){ grid-area:b; } /* المروج */
     #isle-grid .isle-card:nth-child(4){ grid-area:top; justify-self:center; } /* المنزه */
@@ -1485,7 +1484,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
   </style>
 
   <script>
-  /* Treasure map trail: hub (المنزه) → chaque île, en 5 courbes indépendantes  comme sur la carte de référence */
+  /* Treasure map trail: hub (المنزه) → chaque île, en 5 courbes indépendantes comme sur la carte de référence */
   const ISLE_HUB_INDEX = 0; // العوينة = 1ère carte dans le DOM (index 0)
 
   function drawIsleConnections() {
@@ -1512,7 +1511,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
     const NS  = 'http://www.w3.org/2000/svg';
     const hub = pts[ISLE_HUB_INDEX];
 
-    // Une courbe indépendante du hub vers chaque île  arc doux, comme les pointillés de la carte
+    // Une courbe indépendante du hub vers chaque île arc doux, comme les pointillés de la carte
     pts.forEach((p, i) => {
       if (i === ISLE_HUB_INDEX) return;
 
@@ -1606,7 +1605,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
       }
     });
   }
-  // Centres Iles data  enrichi avec tel / adresse / gmaps / horaires
+  // Centres Iles data enrichi avec tel / adresse / gmaps / horaires
   // Ordre = ordre du DOM (matche la disposition en eventail) : 0 Aouina, 1 Boumhal, 2 Mourouj, 3 Menzah (hub), 4 Bardo, 5 Medina Jedida
   const isles = [
     {
@@ -1616,7 +1615,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
       centerNumber:'المركز رقم 1',
       levels:'من السابعة أساسي إلى الباكالوريا',
       directorName:'منى هاللي',
-      directorPhoto:'fondateur.png',
+      directorPhoto:'mouna.jpg',
       phones:['23 072 601','22 073 119'],
       address:'3 نهج الزهور، العوينة',
       gmaps:'https://maps.google.com/?q=Aouina,+Tunis',
@@ -1646,7 +1645,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
       centerNumber:'المركز رقم 3',
       levels:'من السابعة أساسي إلى الأولى ثانوي',
       directorName:' سنية خلف',
-      directorPhoto:'fondateur.png',
+      directorPhoto:'',
       phones:['58 120 057','58 111 853'],
       address:'حي المروج 6، بن عروس',
       gmaps:'https://maps.google.com/?q=Mourouj,+Ben+Arous,+Tunisia',
@@ -1690,7 +1689,7 @@ body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--tx);line-he
       location:'المدينة الجديدة، تونس العاصمة',
       centerNumber:'المركز رقم 6',
       levels:'من السابعة أساسي إلى الأولى ثانوي',
-      directorName:'',
+      directorName:'منال خميري',
       directorPhoto:'directrice-madina.jpg',
       phones:['54 547 004','54 549 004'],
       address:'المدينة الجديدة، تونس العاصمة',

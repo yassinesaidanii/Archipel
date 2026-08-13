@@ -141,10 +141,10 @@
     /* FEATURED */
     .featured {
       background: var(--white); border-radius: var(--radius);
-      overflow: hidden; display: grid; grid-template-columns: 1.05fr 1fr;
+      overflow: hidden; display: grid; grid-template-columns: .85fr 1.4fr; align-items: stretch;
       box-shadow: var(--shadow); margin-bottom: 48px;
     }
-    .featured .thumb { min-height: 300px; }
+    .featured .thumb { aspect-ratio: 9 / 16; min-height: 0; max-height: 520px; justify-self: start; width: 100%; }
     .featured .feat-badge {
       position: absolute; top: 16px; left: 16px; z-index: 2;
       background: rgba(255,255,255,.16); backdrop-filter: blur(4px); color: white;
@@ -265,7 +265,7 @@
 
     @media (max-width: 700px) {
       .featured { grid-template-columns: 1fr; }
-      .featured .thumb { min-height: 200px; }
+      .featured .thumb { aspect-ratio: 9 / 16; max-height: 420px; justify-self: center; order: -1; }
       .nav-links { display: none; }
       .stats-row { flex-wrap: wrap; border-radius: 20px; }
       .stat { flex: 1 1 50%; }
@@ -549,33 +549,34 @@ let filter = 'الكل', q = '';
 let VIDEOS = [
   {
     id: 1,
-    title: 'رحلتي مع Archipel من الابتدائي إلى البكالوريا',
-    excerpt: 'مريم تحكي كيف ساعدها التعلم المختلط على تجاوز صعوباتها في الرياضيات وبناء الثقة بالنفس.',
-    cat: 1,
-    author: 'مريم بن علي',
-    date: '20 جوان 2026',
-    cover: 'assets/images/taha.png',
-    emoji: '🎓',
-    url: 'https://youtube.com/shorts/g8BnYzrY_lM',
-    featured: true
+    title: 'يعطيكم الصحة... فرحتي متتوصفش <br>أكثر فرحة تستحقّ الاحتفال...',
+    excerpt: 'سيرين العسيلي، تلميذتنا، تتحصّل على البكالوريا شعبة علوم تجريبية بمعدل **14.85** و **Mention Bien**. <br>لحظات كيف هاذي تذكّرنا ديما علاش نخدموا، وعلاش كل نجاح لتلميذ هو فرحة نتقاسموها مع عايلتو.مبروك سيرين، ومبروك لعائلتها. 💜',
+    cat: 2,
+    author: 'أم سيرين العسيلي',
+    date: '14 جوان 2026',
+    cover: 'assets/images/syrineassili.jpg',
+    emoji: '👩',
+    url: 'https://www.facebook.com/reel/1336093281288157',
+    featured: true,
+    landscape: false
   },
   {
     id: 2,
-    title: 'الثلاثي الأول هو مفتاح النجاح في البكالوريا',
-    excerpt: 'جملة هاذي باش تسمعها من كل أساتذتك ومن كل تلميذ جاب معدل قوي في الباك. ومع Archipel Mixed Learning باش تخرج من الثلاثي الأول وانت متمكن من كل الدروس وفاهم كل شيء 💪',
-    cat: 3,
-    author: 'فريق أرخبيل',
+    title: 'Archipel حلّي برشا مشاكل.. بالحق منقضي🤍',
+    excerpt: ' هذي شهادة مدام تقوى ولية تلميذنا يوسف برهومي 7 أساسي بمركز المنزه ✨ ما فماش أجمل من إنّك تشوف مجهودك عامل فرق ',
+    cat: 2,
+    author: 'مدام تقوى',
     date: '5 ماي 2026',
-    cover: 'assets/images/tholathi.jpg',
+    cover: 'assets/images/madame-takwa.jpg',
     emoji: '🎙️',
-    url: 'https://www.facebook.com/reel/856899603697983'
+    url: 'https://www.facebook.com/reel/1460736791837684'
   },
   {
     id: 3,
     title: 'شنوة يبقى من رحلة التلميذ بعد ما تكمّل؟',
-    excerpt: 'لأنّ رسالتنا عمرها ما كانت تقتصر على تكوين تلميذ ناجح...بل على صناعة قادة المستقبل؛ شباب يؤمنون بأنفسهم، يواجهون الحياة بثقة، ويتركون أثرًا أينما كانوا. 💜',
+    excerpt: 'غفران كانت، كيف برشا تلامذة، تحضر في الورشات، تتعلّم، تغامر، وتجرّب حاجات ما كانتش تتصوّر نهار باش تعملها.',
     cat: 3,
-    author: 'فريق أرخبيل',
+    author: 'غفران ',
     date: '2 جوان 2026',
     cover: 'assets/images/ghofrane-kitab.jpg',
     emoji: '🎓',
@@ -583,31 +584,31 @@ let VIDEOS = [
   },
   {
     id: 4,
-    title: 'بودكاست: كيف نبني عادات مذاكرة ناجحة؟',
-    excerpt: 'يفاه نعاون صغيري باش يحضّر لمناظرة النموذجي؟ 📚✨التحضير للنوفيام موش كان قراية و تمارين…',
-    cat: 3,
-    author: 'فريق أرخبيل',
+    title: 'كيفاه نعاون صغيري باش يحضّر لمناظرة النموذجي؟ 📚✨',
+    excerpt: 'لتحضير للنوفيام موش كان قراية و تمارين… زادة دعم نفسي، ثقة، و طريقة تعامل صحيحة مع الضغط 🤍',
+    cat: 4,
+    author: 'دكتورة مروى بن عرفي',
     date: '2 جوان 2026',
     cover: 'assets/images/nafseya1.jpg',
     emoji: '🎙️',
-    url: 'https://www.facebook.com/reel/1995546827718494'
+    url: 'https://www.facebook.com/reel/993731430133153'
   },
   {
     id: 5,
-    title: 'بودكاست: كيف نبني عادات مذاكرة ناجحة؟',
-    excerpt: 'الحلقة الأولى من بودكاست Archipel مع فريق البيداغوجيا حول أسرار التنظيم الدراسي.',
-    cat: 3,
-    author: 'فريق أرخبيل',
+    title: 'كيفاه ما نخليش الـ stress يتحكّم فيا نهار الباك؟ 🎓✨',
+    excerpt: 'في الفيديو هذا، الأخصائية النفسية دكتورة مروى بن عرفي تجاوب على السؤال هذا و تعطي نصائح عملية تعاونك تدخل تعدّي و إنت أكثر هدوء و تركيز 🌟',
+    cat: 4,
+    author: 'دكتورة مروى بن عرفي',
     date: '2 جوان 2026',
     cover: 'assets/images/nafseya2.jpg',
     emoji: '🎙️',
-    url: 'https://www.facebook.com/reel/993731430133153'
+    url: 'https://www.facebook.com/reel/1995546827718494'
   },
   {
     id: 6,
     title: 'بودكاست: النجاح موش صدفة…هو طريقة خدمة  ',
     excerpt: 'كيفاش تضمن عدد باهي في الباك التطبيقي؟ 🎯📐النجاح موش صدفة…هو طريقة خدمة، تركيز، وتفاصيل صغيرة تنجم تعمل الفرق الكبير ✨',
-    cat: 3,
+    cat: 4,
     author: 'فريق أرخبيل',
     date: '5 ماي 2026',
     cover: 'assets/images/advice-bac.jpg',
@@ -618,7 +619,7 @@ let VIDEOS = [
     id: 7,
     title: 'نصايح فعالة على كيفيّة تكوين ملخّص ناجع باش تفهم أسرع وتراجع بذكاء 📚💡',
     excerpt: ' قدمت نصايح فعالة على كيفيّة تكوين ملخّص ناجع باش تفهم أسرع وتراجع بذكاء 📚💡✍️ خطوات بسيطة تنجّم تعاونك تثبّت المعلومة وتنظم قرايتك بطريقة أسهل 👌',
-    cat: 3,
+    cat: 4,
     author: 'ميرفت حكيري',
     date: '14 جوان 2026',
     cover: 'assets/images/mola5ess.jpg',
@@ -649,7 +650,7 @@ let VIDEOS = [
   },
   {
     id: 10,
-    title: 'ي شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...',
+    title: 'شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...',
     excerpt: 'في شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...كيفاش ولات تقرى بحماس، وثقتها في روحها كبرت، وحتى معدّلاتها تحسّنت. 💜',
     cat: 1,
     author: 'ملكة السمراني',
@@ -660,8 +661,8 @@ let VIDEOS = [
   },
   {
     id: 11,
-    title: 'ي شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...',
-    excerpt: 'في شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...كيفاش ولات تقرى بحماس، وثقتها في روحها كبرت، وحتى معدّلاتها تحسّنت. 💜',
+    title: 'ثمّة رحلات ما تتقاسش بالساعات...',
+    excerpt: 'كبر معانا، تعلّم معانا، وعشنا معاه كل مرحلة، حتى اليوم اللي حقّق فيه حلمو ونجح في البكالوريا إعلامية. ',
     cat: 2,
     author: 'يامنة بوغدير',
     date: '14 جوان 2026',
@@ -682,16 +683,38 @@ let VIDEOS = [
   },
   {
     id: 13,
-    title: 'يعطيكم الصحة... فرحتي متتوصفش',
-    excerpt: 'سيرين العسيلي، تلميذتنا، تتحصّل على البكالوريا شعبة علوم تجريبية بمعدل **14.85** و **Mention Bien**. ',
+    title: 'إنا إنسان وفيّ لـ Archipel... بديت معاهم من الأول، نكمّل للآخر.',
+    excerpt: 'اليوم، ياسين سعيداني يكلّل رحلتو معانا بنجاح مشرّف في البكالوريا بمعدل 16.12 و Mention Très Bien. 🎓✨',
+    cat: 1,
+    author: 'ياسين سعيداني',
+    date: '20 جوان 2026',
+    cover: 'assets/images/saidani.jpg',
+    emoji: '🎓',
+    url: 'https://www.facebook.com/reel/1166127139048707',
+  },
+  {
+    id: 14,
+    title: 'وراء الكلمة هاذي، ثمّة ثقة، متابعة، واطمئنان على قراية صغيرها ومستقبلو.',
+    excerpt: 'عد عامين معانا في مركز المنزه 6، كلمات مدام فرح كانت من أجمل الشهادات اللي تنجم توصلنا',
     cat: 2,
-    author: 'أم سيرين العسيلي',
-    date: '14 جوان 2026',
-    cover: 'assets/images/syrineassili.jpg',
+    author: 'مدام فرح',
+    date: '14 جوان 2026', 
+    cover: 'assets/images/madam-farah.jpg',
     emoji: '👩',
-    url: 'https://www.facebook.com/reel/1336093281288157'
+    url: 'https://www.facebook.com/reel/2086956108884582'
   },
 ];
+
+/* بعض الفيديوهات (المسمّاة "shorts"/"reel" في رابطها) تُفتح عادةً بصيغة عمودية،
+   لكن محتواها فعليًا أفقي. openVideoSmart تفرض الاتجاه الصحيح بعد فتح المشغّل. */
+function openVideoSmart(url, landscape){
+  openVideo(url);
+  if(!landscape) return;
+  setTimeout(function(){
+    var box = document.getElementById('videoModalBox');
+    if(box) box.classList.remove('portrait');
+  }, 0);
+}
 
 const ini = n => n.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
 const catCls = c => CAT_CLASS[c] || 't-eleves';
@@ -708,7 +731,7 @@ function thumbHtml(v, big){
     : '';
   const noLink = "";
   return `
-    <div class="thumb" style="${!v.cover ? `background:linear-gradient(135deg, var(--navy), ${catBg(v.cat)})` : ''}" onclick="openVideo('${safeUrl}')">
+    <div class="thumb" style="${!v.cover ? `background:linear-gradient(135deg, var(--navy), ${catBg(v.cat)})` : ''}" onclick="openVideoSmart('${safeUrl}', ${!!v.landscape})">
       ${cover}
       <div class="overlay"></div>
       <div class="placeholder" style="display:${v.cover ? 'none' : 'flex'}">
@@ -743,7 +766,7 @@ function renderFeatured(){
   if(!v){ el.style.display='none'; return; }
   el.style.display='';
   el.innerHTML = `
-    <div class="thumb" onclick="openVideo('${(v.url||'').replace(/'/g,"\\'")}')" style="${!v.cover ? `background:linear-gradient(135deg, var(--navy), ${catBg(v.cat)})` : ''}">
+    <div class="thumb" onclick="openVideoSmart('${(v.url||'').replace(/'/g,"\\'")}', ${!!v.landscape})" style="${!v.cover ? `background:linear-gradient(135deg, var(--navy), ${catBg(v.cat)})` : ''}">
       <span class="feat-badge">✦ فيديو مميّز</span>
       ${v.cover ? `<img class="cover-img" src="${v.cover}" alt="${v.title}" onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex'">` : ''}
       <div class="overlay"></div>
@@ -761,7 +784,7 @@ function renderFeatured(){
         <div class="avatar">${v.cover ? `<img src="${v.cover}" alt="${v.author}" onerror="this.remove()">` : ini(v.author)}</div>
         <div class="author-info"><strong>${v.author}</strong><span>${v.date}</span></div>
       </div>
-      <button class="watch-btn" onclick="openVideo('${(v.url||'').replace(/'/g,"\\'")}')">&#9654; شاهد الفيديو</button>
+      <button class="watch-btn" onclick="openVideoSmart('${(v.url||'').replace(/'/g,"\\'")}', ${!!v.landscape})">&#9654; شاهد الفيديو</button>
     </div>`;
 }
 

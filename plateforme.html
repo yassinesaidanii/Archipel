@@ -1534,26 +1534,34 @@
      ═══════════════════════════════════════════════════════════ */
 var LESSONS = [
   { subject:'الرياضيات', level:'إعدادي', topic:'', grad:'linear-gradient(150deg, var(--p), var(--pm))', url:'https://youtu.be/wXUFq4Wk_LY',
+    photo:'https://images.unsplash.com/photo-1758685848084-fc51214f3cd0?auto=format&fit=crop&w=700&q=70',
     icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="12" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>' },
 
   { subject:'الفيزياء', level:'بكالوريا', topic:'', grad:'linear-gradient(150deg, var(--c), #0f8aa3)', url:'https://youtu.be/T5jFE1wSLBY',
+    photo:'https://images.unsplash.com/photo-1633493702341-4d04841df53b?auto=format&fit=crop&w=700&q=70',
     icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>' },
 
   { subject:'الفلسفة', level:'بكالوريا', topic:'', grad:'linear-gradient(150deg, var(--o), #c15208)', url:'https://youtu.be/n5-AoSsR3AY',
+    photo:'https://images.unsplash.com/photo-1620662736427-b8a198f52a4d?auto=format&fit=crop&w=700&q=70',
     icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 3h6M10 3v6l-6 9a2 2 0 002 3h12a2 2 0 002-3l-6-9V3"/></svg>' },
 
   { subject:'الفرنسية', level:'ثانوي', topic:'', grad:'linear-gradient(150deg, var(--pm), #7d4bc9)', url:'https://youtu.be/z191iim2pPE',
+    photo:'https://images.unsplash.com/photo-1507666664345-c49223375e33?auto=format&fit=crop&w=700&q=70',
     icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>' },
 
   { subject:'الإنجليزية', level:'إعدادي', topic:'', grad:'linear-gradient(150deg, var(--gold), #b5810f)', url:'https://youtu.be/ZDG-IDBQtRY',
+    photo:'https://images.unsplash.com/photo-1759357001025-301b269261c8?auto=format&fit=crop&w=700&q=70',
     icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg>' }
 ];
 
   document.getElementById('lessonsTrack').innerHTML = LESSONS.map(function(l){
     var safeUrl = (l.url || '').replace(/'/g, "\\'");
+    var bgStyle = l.photo
+      ? "background-image:linear-gradient(175deg,rgba(15,8,35,.1),rgba(15,8,35,.6)),url('" + l.photo + "');background-size:cover;background-position:center;"
+      : ('background:' + l.grad + ';');
     return '<div class="pf-lesson-card" onclick="openVideo(\'' + safeUrl + '\')">' +
-      '<div class="pf-lesson-card-bg" style="background:' + l.grad + '">' +
-        '<div class="dots-pattern"></div>' +
+      '<div class="pf-lesson-card-bg" style="' + bgStyle + '">' +
+        (l.photo ? '' : '<div class="dots-pattern"></div>') +
         '<div class="pf-lesson-shade"></div>' +
       '</div>' +
       '<div class="glyph">' + l.icon + '</div>' +
