@@ -22,6 +22,8 @@
       --border:       #DDD6F5;
       --teal:         #0F766E;
       --teal-light:   #E6F7F4;
+      --green:        #1E8E5A;
+      --green-light:  #E7F6EE;
       --radius:       18px;
       --shadow:       0 4px 28px rgba(59,31,168,.10);
     }
@@ -161,6 +163,7 @@
     .t-eleves { background: var(--orange-light); color: var(--orange); }
     .t-parents { background: var(--purple-light); color: var(--purple); }
     .t-podcast { background: var(--teal-light); color: var(--teal); }
+    .t-conseils { background: var(--green-light); color: var(--green); }
     .feat-body h2 {
       font-size: clamp(20px, 2.4vw, 27px); font-weight: 900; color: var(--navy);
       line-height: 1.45; margin-bottom: 12px;
@@ -379,9 +382,10 @@
   <div class="filters-section">
   <div class="filters" id="filters">
     <button class="filter-btn active" data-cat="الكل">الكل</button>
-    <button class="filter-btn" data-cat="تلاميذ"><span class="dot" style="background:var(--orange)"></span>شهادات التلاميذ</button>
-    <button class="filter-btn" data-cat="أولياء"><span class="dot" style="background:var(--purple)"></span>شهادات الأولياء</button>
-    <button class="filter-btn" data-cat="بودكاست"><span class="dot" style="background:var(--teal)"></span>بودكاست</button>
+    <button class="filter-btn" data-cat="1"><span class="dot" style="background:var(--orange)"></span>شهادات التلاميذ</button>
+    <button class="filter-btn" data-cat="2"><span class="dot" style="background:var(--purple)"></span>شهادات الأولياء</button>
+    <button class="filter-btn" data-cat="3"><span class="dot" style="background:var(--teal)"></span>بودكاست</button>
+    <button class="filter-btn" data-cat="4"><span class="dot" style="background:var(--green)"></span>نصائح</button>
   </div>
 </div>
 </header>
@@ -389,9 +393,10 @@
 <div class="filters-section">
   <div class="filters" id="filters">
     <button class="filter-btn active" data-cat="الكل">الكل</button>
-    <button class="filter-btn" data-cat="تلاميذ"><span class="dot" style="background:var(--orange)"></span>شهادات التلاميذ</button>
-    <button class="filter-btn" data-cat="أولياء"><span class="dot" style="background:var(--purple)"></span>شهادات الأولياء</button>
-    <button class="filter-btn" data-cat="بودكاست"><span class="dot" style="background:var(--teal)"></span>بودكاست</button>
+    <button class="filter-btn" data-cat="1"><span class="dot" style="background:var(--orange)"></span>شهادات التلاميذ</button>
+    <button class="filter-btn" data-cat="2"><span class="dot" style="background:var(--purple)"></span>شهادات الأولياء</button>
+    <button class="filter-btn" data-cat="3"><span class="dot" style="background:var(--teal)"></span>بودكاست</button>
+    <button class="filter-btn" data-cat="4"><span class="dot" style="background:var(--green)"></span>نصائح</button>
   </div>
 </div>
 -->
@@ -523,15 +528,20 @@
       https://www.facebook.com/reel/XXXXXXXXXX
       https://youtube.com/shorts/VIDEO_ID  (يُعرض عمودياً تلقائياً)
    2) أضف عنصرًا جديدًا في مصفوفة VIDEOS أسفله وضع الرابط في url
-   3) أضف صورة غلاف في cover (اختياري) — إن لم تتوفر ستظهر بطاقة
+   3) في حقل cat، حط رقم الفئة فقط: 1 = تلاميذ، 2 = أولياء، 3 = بودكاست، 4 = نصائح
+      (لإضافة بودكاست جديد: انسخ عنصرًا موجودًا وبدّل العنوان والرابط، وخلي cat: 3)
+      (لإضافة نصيحة جديدة: نفس الشيء، وخلي cat: 4)
+   4) أضف صورة غلاف في cover (اختياري) — إن لم تتوفر ستظهر بطاقة
       بلون متدرّج مع أول حرف/إيموجي بدلاً منها
    دالة openVideo() الموجودة في js/main.js تتكفّل بالباقي: تكتشف
    نوع الرابط (يوتيوب/فيسبوك/شورتس/ريلز) وتفتحه في نافذة مشغّل أنيقة.
    ═══════════════════════════════════════════════════════════ */
 
-const CAT_LABEL = { 'تلاميذ':'شهادة تلميذ', 'أولياء':'شهادة ولي', 'بودكاست':'حلقة بودكاست' };
-const CAT_CLASS = { 'تلاميذ':'t-eleves', 'أولياء':'t-parents', 'بودكاست':'t-podcast' };
-const CAT_BG    = { 'تلاميذ':'var(--orange)', 'أولياء':'var(--purple)', 'بودكاست':'var(--teal)' };
+// فئات الفيديو — استعمل رقم الفئة (catId) في حقل cat عند إضافة فيديو أو بودكاست جديد:
+// 1 = تلاميذ (شهادة تلميذ)     2 = أولياء (شهادة ولي)     3 = بودكاست (حلقة بودكاست)     4 = نصائح
+const CAT_LABEL = { 1:'شهادة تلميذ', 2:'شهادة ولي', 3:'حلقة بودكاست', 4:'نصائح' };
+const CAT_CLASS = { 1:'t-eleves', 2:'t-parents', 3:'t-podcast', 4:'t-conseils' };
+const CAT_BG    = { 1:'var(--orange)', 2:'var(--purple)', 3:'var(--teal)', 4:'var(--green)' };
 
 let filter = 'الكل', q = '';
 
@@ -541,7 +551,7 @@ let VIDEOS = [
     id: 1,
     title: 'رحلتي مع Archipel من الابتدائي إلى البكالوريا',
     excerpt: 'مريم تحكي كيف ساعدها التعلم المختلط على تجاوز صعوباتها في الرياضيات وبناء الثقة بالنفس.',
-    cat: 'تلاميذ',
+    cat: 1,
     author: 'مريم بن علي',
     date: '20 جوان 2026',
     cover: 'assets/images/taha.png',
@@ -553,7 +563,7 @@ let VIDEOS = [
     id: 2,
     title: 'الثلاثي الأول هو مفتاح النجاح في البكالوريا',
     excerpt: 'جملة هاذي باش تسمعها من كل أساتذتك ومن كل تلميذ جاب معدل قوي في الباك. ومع Archipel Mixed Learning باش تخرج من الثلاثي الأول وانت متمكن من كل الدروس وفاهم كل شيء 💪',
-    cat: 'بودكاست',
+    cat: 3,
     author: 'فريق أرخبيل',
     date: '5 ماي 2026',
     cover: 'assets/images/tholathi.jpg',
@@ -564,7 +574,7 @@ let VIDEOS = [
     id: 3,
     title: 'شنوة يبقى من رحلة التلميذ بعد ما تكمّل؟',
     excerpt: 'لأنّ رسالتنا عمرها ما كانت تقتصر على تكوين تلميذ ناجح...بل على صناعة قادة المستقبل؛ شباب يؤمنون بأنفسهم، يواجهون الحياة بثقة، ويتركون أثرًا أينما كانوا. 💜',
-    cat: 'بودكاست',
+    cat: 3,
     author: 'فريق أرخبيل',
     date: '2 جوان 2026',
     cover: 'assets/images/ghofrane-kitab.jpg',
@@ -575,7 +585,7 @@ let VIDEOS = [
     id: 4,
     title: 'بودكاست: كيف نبني عادات مذاكرة ناجحة؟',
     excerpt: 'يفاه نعاون صغيري باش يحضّر لمناظرة النموذجي؟ 📚✨التحضير للنوفيام موش كان قراية و تمارين…',
-    cat: 'بودكاست',
+    cat: 3,
     author: 'فريق أرخبيل',
     date: '2 جوان 2026',
     cover: 'assets/images/nafseya1.jpg',
@@ -586,7 +596,7 @@ let VIDEOS = [
     id: 5,
     title: 'بودكاست: كيف نبني عادات مذاكرة ناجحة؟',
     excerpt: 'الحلقة الأولى من بودكاست Archipel مع فريق البيداغوجيا حول أسرار التنظيم الدراسي.',
-    cat: 'بودكاست',
+    cat: 3,
     author: 'فريق أرخبيل',
     date: '2 جوان 2026',
     cover: 'assets/images/nafseya2.jpg',
@@ -597,7 +607,7 @@ let VIDEOS = [
     id: 6,
     title: 'بودكاست: النجاح موش صدفة…هو طريقة خدمة  ',
     excerpt: 'كيفاش تضمن عدد باهي في الباك التطبيقي؟ 🎯📐النجاح موش صدفة…هو طريقة خدمة، تركيز، وتفاصيل صغيرة تنجم تعمل الفرق الكبير ✨',
-    cat: 'بودكاست',
+    cat: 3,
     author: 'فريق أرخبيل',
     date: '5 ماي 2026',
     cover: 'assets/images/advice-bac.jpg',
@@ -608,12 +618,78 @@ let VIDEOS = [
     id: 7,
     title: 'نصايح فعالة على كيفيّة تكوين ملخّص ناجع باش تفهم أسرع وتراجع بذكاء 📚💡',
     excerpt: ' قدمت نصايح فعالة على كيفيّة تكوين ملخّص ناجع باش تفهم أسرع وتراجع بذكاء 📚💡✍️ خطوات بسيطة تنجّم تعاونك تثبّت المعلومة وتنظم قرايتك بطريقة أسهل 👌',
-    cat: 'بودكاست',
+    cat: 3,
     author: 'ميرفت حكيري',
     date: '14 جوان 2026',
     cover: 'assets/images/mola5ess.jpg',
     emoji: '👩',
     url: 'https://www.facebook.com/reel/1357423412834420'
+  },
+  {
+    id: 8,
+    title: 'في بعض الأحيان، المسافة تكون مجرد رقم...',
+    excerpt: 'زينب الحمروني اختارت تعيش رحلتها مع Archipel Mixed Learning عن بُعد، واليوم تتوّج سنوات من الاجتهاد بنجاحها في بكالوريا الإعلامية بمعدل 14.38. 🎓',
+    cat: 1,
+    author: 'زينب الحمروني',
+    date: '14 جوان 2026',
+    cover: 'assets/images/zeinebhamrouni.jpg',
+    emoji: '👩',
+    url: 'https://www.facebook.com/reel/2099386774018590'
+  },
+  {
+    id: 9,
+    title: ' موش كان معدّلاتها اللي تحسّنت 📚',
+    excerpt: 'سيرين بن زايد، تلميذتنا في Archipel Boumhal، تحكيلنا كيفاش تجربتها معانا بدّلت فيها برشا حاجات.',
+    cat: 1,
+    author: 'سيرين بن زايد',
+    date: '14 جوان 2026',
+    cover: 'assets/images/syrinebenzayd.jpg',
+    emoji: '👩',
+    url: 'https://www.facebook.com/reel/3309745222748181'
+  },
+  {
+    id: 10,
+    title: 'ي شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...',
+    excerpt: 'في شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...كيفاش ولات تقرى بحماس، وثقتها في روحها كبرت، وحتى معدّلاتها تحسّنت. 💜',
+    cat: 1,
+    author: 'ملكة السمراني',
+    date: '14 جوان 2026',
+    cover: 'assets/images/molkasomrani.jpg',
+    emoji: '👩',
+    url: 'https://www.facebook.com/reel/1024183133756690'
+  },
+  {
+    id: 11,
+    title: 'ي شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...',
+    excerpt: 'في شهادتها، تحكيلنا ملكة السمراني كيفاش Archipel رجّعلها الرغبة في القراية...كيفاش ولات تقرى بحماس، وثقتها في روحها كبرت، وحتى معدّلاتها تحسّنت. 💜',
+    cat: 2,
+    author: 'يامنة بوغدير',
+    date: '14 جوان 2026',
+    cover: 'assets/images/yamnaboghdir.jpg',
+    emoji: '👩',
+    url: 'https://www.facebook.com/reel/1605289284647975'
+  },
+  {
+    id: 12,
+    title: 'ثمّة تجارب...كل ما تحاول توصفها، تلقى الكلمات ما عادش تكفي. 🤍',
+    excerpt: 'بعد رحلة عاشت فيها معانا في مركزنا بباردو، شهادة اختارت تختصر إحساسها بجملة بسيطة:',
+    cat: 1,
+    author: 'شهد بن غربال',
+    date: '14 جوان 2026',
+    cover: 'assets/images/chahedbnghorbel.jpg',
+    emoji: '👩',
+    url: 'https://www.facebook.com/reel/1752611606182130'
+  },
+  {
+    id: 13,
+    title: 'يعطيكم الصحة... فرحتي متتوصفش',
+    excerpt: 'سيرين العسيلي، تلميذتنا، تتحصّل على البكالوريا شعبة علوم تجريبية بمعدل **14.85** و **Mention Bien**. ',
+    cat: 2,
+    author: 'أم سيرين العسيلي',
+    date: '14 جوان 2026',
+    cover: 'assets/images/syrineassili.jpg',
+    emoji: '👩',
+    url: 'https://www.facebook.com/reel/1336093281288157'
   },
 ];
 
@@ -647,7 +723,7 @@ function thumbHtml(v, big){
 
 function getFiltered(){
   return VIDEOS.filter(v=>{
-    const mc = filter==='الكل' || v.cat===filter;
+    const mc = filter==='الكل' || String(v.cat)===filter;
     const mq = !q || v.title.includes(q) || v.excerpt.includes(q);
     return mc && mq;
   });
@@ -655,9 +731,9 @@ function getFiltered(){
  /*
 function updateStats(){
   document.getElementById('statTotal').textContent = VIDEOS.length;
-  document.getElementById('statEleves').textContent = VIDEOS.filter(v=>v.cat==='تلاميذ').length;
-  document.getElementById('statParents').textContent = VIDEOS.filter(v=>v.cat==='أولياء').length;
-  document.getElementById('statPodcast').textContent = VIDEOS.filter(v=>v.cat==='بودكاست').length;
+  document.getElementById('statEleves').textContent = VIDEOS.filter(v=>v.cat===1).length;
+  document.getElementById('statParents').textContent = VIDEOS.filter(v=>v.cat===2).length;
+  document.getElementById('statPodcast').textContent = VIDEOS.filter(v=>v.cat===3).length;
 }
 */
 function renderFeatured(){
