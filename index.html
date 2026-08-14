@@ -2277,7 +2277,10 @@ img[loading="lazy"][src=""]{opacity:1}
 })();
 </script>
 
-<!-- ══ PROMO POPUP — الذكرى 9 (نفس ثيم الموقع: بنفسجي/برتقالي/ذهبي) ══ -->
+<!-- ══════════════════════════════════════════════════
+     POPUP PROMO — الذكرى 9 (Le Coffre des 9 Bougies)
+     كود البوب أب: من هنا لغاية "END PROMO POPUP" تحت
+     ══════════════════════════════════════════════════ -->
 <style>
   #promo-popup-overlay {
     position: fixed;
@@ -2297,11 +2300,10 @@ img[loading="lazy"][src=""]{opacity:1}
   #promo-popup-card {
     position: relative;
     width: 100%;
-    max-width: 440px;
-    background: var(--w);
+    max-width: 460px;
+    background: transparent;
     border-radius: 20px;
-    padding: 40px 30px 32px;
-    text-align: center;
+    overflow: hidden;
     box-shadow: var(--shl);
     transform: translateY(16px) scale(.97);
     transition: transform .35s cubic-bezier(.22,1,.36,1);
@@ -2310,14 +2312,14 @@ img[loading="lazy"][src=""]{opacity:1}
 
   #promo-popup-close {
     position: absolute;
-    top: 14px;
-    left: 14px;
+    top: 12px;
+    left: 12px;
     z-index: 10;
     width: 36px;
     height: 36px;
     border-radius: 50%;
     border: none;
-    background: var(--pl);
+    background: rgba(255,255,255,.85);
     color: var(--p);
     font-size: 1rem;
     cursor: pointer;
@@ -2326,96 +2328,20 @@ img[loading="lazy"][src=""]{opacity:1}
     justify-content: center;
     transition: background .2s;
   }
-  #promo-popup-close:hover { background: var(--pm2); }
+  #promo-popup-close:hover { background: #fff; }
 
-  .promo-popup-chest { width: 76px; height: auto; margin: 0 auto 16px; display: block; }
-
-  .promo-popup-eyebrow {
-    display: inline-block;
-    background: var(--pl);
-    color: var(--p);
-    font-size: .75rem;
-    font-weight: 700;
-    padding: 6px 18px;
-    border-radius: 50px;
-    letter-spacing: .3px;
-    margin: 0 0 14px;
-  }
-
-  .promo-popup-title {
-    font-family: 'Cairo', sans-serif;
-    font-size: 1.7rem;
-    font-weight: 900;
-    color: var(--p);
-    margin: 0 0 12px;
-    line-height: 1.3;
-  }
-  .promo-popup-title .accent { color: var(--o); }
-
-  .promo-popup-text {
-    font-size: .95rem;
-    color: var(--txm);
-    line-height: 1.8;
-    margin: 0 0 24px;
-    font-weight: 600;
-  }
-
-  .promo-popup-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--o);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 800;
-    padding: 14px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 28px rgba(232,82,10,.35);
-    transition: all .2s ease;
-  }
-  .promo-popup-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,82,10,.45); }
-
-  .promo-popup-dismiss {
+  .promo-popup-img {
     display: block;
-    margin: 16px auto 0;
-    background: none;
-    border: none;
-    font-size: .85rem;
-    color: var(--txm);
-    text-decoration: underline;
+    width: 100%;
+    height: auto;
     cursor: pointer;
-    font-family: 'Cairo', sans-serif;
   }
 </style>
 
 <div id="promo-popup-overlay">
-  <div id="promo-popup-card" role="dialog" aria-modal="true" aria-labelledby="promo-popup-title">
+  <div id="promo-popup-card" role="dialog" aria-modal="true" aria-label="عرض الذكرى 9 لـ Archipel">
     <button id="promo-popup-close" aria-label="إغلاق">✕</button>
-
-    <svg class="promo-popup-chest" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="30" cy="22" rx="1.6" ry="5" fill="#D4A017"/>
-      <ellipse cx="30" cy="15" rx="3" ry="4" fill="#E8520A"/>
-      <ellipse cx="50" cy="18" rx="1.6" ry="6" fill="#D4A017"/>
-      <ellipse cx="50" cy="10" rx="3.2" ry="4.5" fill="#E8520A"/>
-      <ellipse cx="70" cy="22" rx="1.6" ry="5" fill="#D4A017"/>
-      <ellipse cx="70" cy="15" rx="3" ry="4" fill="#E8520A"/>
-      <rect x="18" y="46" width="64" height="34" rx="4" fill="#5B2D9E" stroke="#3D1A6E" stroke-width="2"/>
-      <path d="M18 46 Q50 24 82 46 L82 52 Q50 32 18 52 Z" fill="#3D1A6E" stroke="#3D1A6E" stroke-width="2"/>
-      <rect x="46" y="46" width="8" height="14" fill="#D4A017"/>
-      <circle cx="50" cy="58" r="5" fill="#D4A017" stroke="#fff" stroke-width="1.5"/>
-    </svg>
-
-    <span class="promo-popup-eyebrow">9 سنين مع عائلة Archipel</span>
-    <h2 id="promo-popup-title" class="promo-popup-title">9 شمعات... <span class="accent">9 تخفيضات</span></h2>
-    <p class="promo-popup-text">
-      كل شمعة تولّع تفتحلك كوبون جديد، يوصل لـ 600 دينار على التسجيل.
-      العرض لـ 9 أيام فقط.
-    </p>
-    <a href="offre-primaire.html" class="promo-popup-cta" data-href="offre-primaire.html">نكتشف الكوبونات ←</a>
-    <button class="promo-popup-dismiss">نعاود نشوف من بعد</button>
+    <img class="promo-popup-img" src="assets/promo/coffre-9-bougies.png" alt="بمناسبة عيد ميلاد Archipel Mixed Learning — تخفيضات تصل إلى 600 دينار" data-href="offre-primaire.html">
   </div>
 </div>
 
@@ -2423,7 +2349,7 @@ img[loading="lazy"][src=""]{opacity:1}
 (function () {
   var overlay = document.getElementById('promo-popup-overlay');
   var closeBtn = document.getElementById('promo-popup-close');
-  var dismissBtn = document.querySelector('.promo-popup-dismiss');
+  var promoImg = document.querySelector('.promo-popup-img');
 
   function openPopup() {
     overlay.classList.add('is-visible');
@@ -2437,11 +2363,12 @@ img[loading="lazy"][src=""]{opacity:1}
   openPopup();
 
   closeBtn.addEventListener('click', closePopup);
-  dismissBtn.addEventListener('click', closePopup);
+  promoImg.addEventListener('click', function () { window.location.href = promoImg.getAttribute('data-href'); });
   overlay.addEventListener('click', function (e) { if (e.target === overlay) closePopup(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePopup(); });
 })();
 </script>
+<!-- ══ END PROMO POPUP ══ -->
 
 </body>
 </html>
